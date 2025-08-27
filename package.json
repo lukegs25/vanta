@@ -1,0 +1,20 @@
+{
+  "name": "vanta",
+  "version": "1.0.0",
+  "description": "A modern, responsive website built with HTML, CSS, and JavaScript. This website features a clean design with smooth animations, mobile responsiveness, and interactive elements.",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lukegs25/vanta.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lukegs25/vanta/issues"
+  },
+  "homepage": "https://github.com/lukegs25/vanta#readme"
+}
