@@ -104,6 +104,10 @@ const observer = new IntersectionObserver((entries) => {
 document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('.work-card, .about-text, .contact-form');
     animatedElements.forEach(el => {
+        // Skip elements that should maintain hover-based visibility
+        if (el.classList.contains('hero-subtitle') || el.classList.contains('unseen-work')) {
+            return;
+        }
         el.style.opacity = '0';
         el.style.transform = 'translateY(30px)';
         el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
