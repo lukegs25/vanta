@@ -211,7 +211,7 @@ body {
         0 0 40px rgba(255, 255, 255, 0.6),
         0 0 60px rgba(255, 255, 255, 0.4),
         0 0 80px rgba(255, 255, 255, 0.2);
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, opacity 0.3s ease;
 }
 
 .hero-subtitle {

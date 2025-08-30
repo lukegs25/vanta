@@ -208,13 +208,23 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// Parallax effect for hero section
+// Parallax effect for hero section and VANTA fade
 window.addEventListener('scroll', () => {
     const scrolled = window.pageYOffset;
     const hero = document.querySelector('.hero');
+    const heroTitle = document.querySelector('.hero-title');
+    
     if (hero) {
         const rate = scrolled * -0.3;
         hero.style.transform = `translateY(${rate}px)`;
+    }
+    
+    // Fade out VANTA text on scroll
+    if (heroTitle) {
+        const fadeStart = 0;
+        const fadeEnd = 150; // Start fading after 150px of scroll (earlier fade)
+        const opacity = Math.max(0, 1 - (scrolled - fadeStart) / (fadeEnd - fadeStart));
+        heroTitle.style.setProperty('opacity', Math.max(0, opacity), 'important');
     }
 });
 
