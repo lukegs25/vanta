@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/lukegs25/vanta/issues"
   },
-  "homepage": "https://github.com/lukegs25/vanta#readme"
+  "homepage": "https://github.com/lukegs25/vanta#readme",
+  "dependencies": {
+    "ogl": "^1.0.11"
+  }
 }

@@ -113,6 +113,50 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
         observer.observe(el);
     });
+    
+    // Initialize particle system for about section
+    console.log('DOM loaded, looking for about section...');
+    const aboutSection = document.querySelector('.about');
+    console.log('About section found:', aboutSection);
+    
+    if (aboutSection) {
+        console.log('Creating particle container...');
+        // Create a container for particles
+        const particleContainer = document.createElement('div');
+        particleContainer.style.position = 'absolute';
+        particleContainer.style.top = '0';
+        particleContainer.style.left = '0';
+        particleContainer.style.width = '100%';
+        particleContainer.style.height = '100%';
+        particleContainer.style.pointerEvents = 'none';
+        particleContainer.style.zIndex = '1';
+        
+        aboutSection.style.position = 'relative';
+        aboutSection.appendChild(particleContainer);
+        console.log('Particle container added to about section');
+        
+        // Initialize particle system
+        console.log('Initializing particle system...');
+        const particles = new ParticleSystem(particleContainer, {
+            particleCount: 200,
+            particleSpread: 15,
+            speed: 0.05,
+            particleColors: ["#ffffff", "#ff69b4", "#4a90e2", "#ffff00"],
+            moveParticlesOnHover: true,
+            particleHoverFactor: 3,
+            alphaParticles: false,
+            particleBaseSize: 8,
+            sizeRandomness: 0.8,
+            cameraDistance: 10,
+            disableRotation: false
+        });
+        console.log('Particle system initialized');
+        
+        // Store reference for debugging
+        window.debugParticles = particles;
+    } else {
+        console.log('About section not found!');
+    }
 });
 
 // Button click effects
