@@ -228,17 +228,64 @@ window.addEventListener('scroll', () => {
     }
 });
 
-// Add loading animation for videos
+// Enhanced video loading and autoplay handling
 document.addEventListener('DOMContentLoaded', () => {
-    const videos = document.querySelectorAll('video');
-    videos.forEach(video => {
-        video.addEventListener('loadeddata', () => {
-            video.style.opacity = '1';
+    // Ensure global video background plays immediately
+    const globalVideo = document.querySelector('.global-video-bg');
+    if (globalVideo) {
+        console.log('Global video element found, initializing...');
+        
+        // Set video to visible immediately
+        globalVideo.style.opacity = '1';
+        
+        // Multiple event listeners to ensure playback
+        globalVideo.addEventListener('loadeddata', () => {
+            console.log('Video data loaded, attempting to play...');
+            globalVideo.play().catch(e => {
+                console.log('Video autoplay failed:', e);
+                // Fallback: show video element anyway
+                globalVideo.style.opacity = '1';
+            });
         });
         
-        video.style.opacity = '0';
-        video.style.transition = 'opacity 0.5s ease-in';
-    });
+        globalVideo.addEventListener('canplay', () => {
+            console.log('Video can play, ensuring visibility...');
+            globalVideo.style.opacity = '1';
+            globalVideo.play().catch(e => {
+                console.log('Video autoplay failed on canplay:', e);
+            });
+        });
+        
+        // Try to play immediately
+        globalVideo.play().catch(e => {
+            console.log('Initial video autoplay failed:', e);
+            // Still show the video element
+            globalVideo.style.opacity = '1';
+        });
+        
+        // Force load the video
+        globalVideo.load();
+        
+        // Add click handler to play video if autoplay is blocked
+        let hasTriedUserInteraction = false;
+        const playVideoOnUserInteraction = () => {
+            if (!hasTriedUserInteraction && globalVideo.paused) {
+                hasTriedUserInteraction = true;
+                globalVideo.play().then(() => {
+                    console.log('Video started playing after user interaction');
+                }).catch(e => {
+                    console.log('Video still failed to play after user interaction:', e);
+                });
+            }
+        };
+        
+        // Listen for any user interaction to trigger video play
+        document.addEventListener('click', playVideoOnUserInteraction, { once: true });
+        document.addEventListener('touchstart', playVideoOnUserInteraction, { once: true });
+        document.addEventListener('keydown', playVideoOnUserInteraction, { once: true });
+    } else {
+        console.log('Global video element not found!');
+    }
 });
 
 

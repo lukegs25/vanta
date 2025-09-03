@@ -183,6 +183,14 @@ body {
     object-fit: cover;
     z-index: -1;
     object-position: center;
+    opacity: 1;
+    pointer-events: none;
+    background: transparent;
+}
+
+/* Ensure video plays */
+.global-video-bg::-webkit-media-controls {
+    display: none !important;
 }
 
 
@@ -260,11 +268,82 @@ body {
     }
 }
 
+/* Services Section */
+.services {
+    padding: 8rem 0;
+    background: transparent;
+    position: relative;
+}
 
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 4rem;
+}
 
+.service-card {
+    background: rgba(20, 20, 20, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 2rem;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
 
+.service-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #4a90e2, #6bb6ff, #4a90e2);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+}
 
+.service-card:hover::before {
+    transform: scaleX(1);
+}
 
+.service-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(74, 144, 226, 0.3);
+    box-shadow: 
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(74, 144, 226, 0.2);
+}
+
+.service-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    filter: grayscale(0.3);
+    transition: filter 0.3s ease;
+}
+
+.service-card:hover .service-icon {
+    filter: grayscale(0);
+}
+
+.service-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #4a90e2, #ffffff);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.service-card p {
+    color: #cccccc;
+    line-height: 1.6;
+    font-size: 0.95rem;
+}
 
 /* About Section */
 .about {
@@ -285,17 +364,19 @@ body {
 }
 
 .about-content {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
+    display: flex;
+    justify-content: center;
     align-items: center;
     position: relative;
     z-index: 2;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 .about-text {
     position: relative;
     z-index: 2;
+    text-align: center;
 }
 
 .about-text p {

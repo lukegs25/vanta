@@ -4,6 +4,8 @@
   "description": "A modern, responsive website built with HTML, CSS, and JavaScript. This website features a clean design with smooth animations, mobile responsiveness, and interactive elements.",
   "main": "script.js",
   "scripts": {
+    "dev": "npx http-server . -p 3001 -o",
+    "start": "npx http-server . -p 3001 -o",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,6 +20,8 @@
   },
   "homepage": "https://github.com/lukegs25/vanta#readme",
   "dependencies": {
-    "ogl": "^1.0.11"
+    "@tailwindcss/vite": "^4.1.12",
+    "ogl": "^1.0.11",
+    "tailwindcss": "^4.1.12"
   }
 }
