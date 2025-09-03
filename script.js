@@ -221,6 +221,31 @@ document.querySelectorAll('.btn').forEach(button => {
     });
 });
 
+// Focus card effects for services section
+document.addEventListener('DOMContentLoaded', () => {
+    const serviceCards = document.querySelectorAll('.service-card');
+    
+    serviceCards.forEach((card, index) => {
+        card.addEventListener('mouseenter', () => {
+            // Add blur effect to all other cards
+            serviceCards.forEach((otherCard, otherIndex) => {
+                if (otherIndex !== index) {
+                    otherCard.classList.add('focus-blur');
+                } else {
+                    otherCard.classList.add('focus-active');
+                }
+            });
+        });
+        
+        card.addEventListener('mouseleave', () => {
+            // Remove all focus effects
+            serviceCards.forEach((otherCard) => {
+                otherCard.classList.remove('focus-blur', 'focus-active');
+            });
+        });
+    });
+});
+
 // Add ripple effect styles
 const style = document.createElement('style');
 style.textContent = `
