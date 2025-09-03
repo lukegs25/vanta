@@ -45,6 +45,45 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+// Scroll-based navigation highlighting
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+    
+    let currentSection = '';
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100; // Offset for better detection
+        const sectionHeight = section.offsetHeight;
+        const scrollPosition = window.pageYOffset;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSection = section.getAttribute('id');
+        }
+    });
+    
+    // Remove active class from all navigation links
+    navLinks.forEach(link => {
+        link.classList.remove('active');
+    });
+    
+    // Add active class to corresponding navigation link
+    if (currentSection) {
+        const activeLink = document.querySelector(`.nav-link[href="#${currentSection}"]`);
+        if (activeLink) {
+            activeLink.classList.add('active');
+        }
+    }
+}
+
+// Add scroll event listener for navigation highlighting
+window.addEventListener('scroll', updateActiveNavLink);
+
+// Initialize active section on page load
+document.addEventListener('DOMContentLoaded', () => {
+    updateActiveNavLink();
+});
+
 // Form submission handling
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
