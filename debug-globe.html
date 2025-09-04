@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Globe Debug</title>
+    <style>
+        body { 
+            margin: 0; 
+            padding: 20px; 
+            background: #000; 
+            color: white; 
+            font-family: Arial, sans-serif; 
+        }
+        .debug-info { 
+            background: rgba(74, 144, 226, 0.1); 
+            padding: 20px; 
+            margin: 10px 0; 
+            border-radius: 8px; 
+        }
+        iframe { 
+            width: 100%; 
+            height: 800px; 
+            border: 2px solid #4a90e2; 
+            border-radius: 8px; 
+        }
+    </style>
+</head>
+<body>
+    <h1>Globe Debug Page</h1>
+    
+    <div class="debug-info">
+        <h2>Main Website (in iframe)</h2>
+        <iframe src="/" id="main-site"></iframe>
+    </div>
+
+    <div class="debug-info">
+        <h2>Debug Information</h2>
+        <div id="debug-output"></div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const debugOutput = document.getElementById('debug-output');
+            
+            setTimeout(() => {
+                try {
+                    const iframe = document.getElementById('main-site');
+                    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+                    
+                    debugOutput.innerHTML += '<h3>Iframe Document Analysis:</h3>';
+                    
+                    // Check if globe section exists
+                    const globeSection = iframeDoc.getElementById('globe');
+                    debugOutput.innerHTML += `<p><strong>Globe Section:</strong> ${globeSection ? 'Found' : 'NOT FOUND'}</p>`;
+                    
+                    if (globeSection) {
+                        const computedStyle = iframe.contentWindow.getComputedStyle(globeSection);
+                        debugOutput.innerHTML += `<p><strong>Display:</strong> ${computedStyle.display}</p>`;
+                        debugOutput.innerHTML += `<p><strong>Visibility:</strong> ${computedStyle.visibility}</p>`;
+                        debugOutput.innerHTML += `<p><strong>Height:</strong> ${computedStyle.height}</p>`;
+                        debugOutput.innerHTML += `<p><strong>Background:</strong> ${computedStyle.background}</p>`;
+                    }
+                    
+                    // Check globe canvas
+                    const globeCanvas = iframeDoc.getElementById('globe-canvas');
+                    debugOutput.innerHTML += `<p><strong>Globe Canvas:</strong> ${globeCanvas ? 'Found' : 'NOT FOUND'}</p>`;
+                    
+                    if (globeCanvas) {
+                        debugOutput.innerHTML += `<p><strong>Canvas Children:</strong> ${globeCanvas.children.length}</p>`;
+                        debugOutput.innerHTML += `<p><strong>Canvas HTML:</strong> ${globeCanvas.innerHTML}</p>`;
+                    }
+                    
+                    // Check if THREE.js loaded
+                    const threeLoaded = iframe.contentWindow.THREE;
+                    debugOutput.innerHTML += `<p><strong>THREE.js:</strong> ${threeLoaded ? 'Loaded' : 'NOT LOADED'}</p>`;
+                    
+                    // Check console errors
+                    debugOutput.innerHTML += '<h3>Page Structure:</h3>';
+                    const sections = iframeDoc.querySelectorAll('section');
+                    sections.forEach((section, i) => {
+                        debugOutput.innerHTML += `<p>Section ${i + 1}: ${section.id || section.className}</p>`;
+                    });
+                    
+                } catch (error) {
+                    debugOutput.innerHTML += `<p><strong>Error accessing iframe:</strong> ${error.message}</p>`;
+                }
+            }, 3000);
+        });
+    </script>
+</body>
+</html>

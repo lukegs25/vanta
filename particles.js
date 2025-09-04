@@ -142,8 +142,8 @@ class ParticleSystem {
         sortedParticles.forEach(particle => {
             // Calculate screen position
             const scale = this.options.cameraDistance / (this.options.cameraDistance + particle.z);
-            const screenX = centerX + particle.x * scale * 50;
-            const screenY = centerY + particle.y * scale * 50;
+            let screenX = centerX + particle.x * scale * 50;
+            let screenY = centerY + particle.y * scale * 50;
             
             // Apply hover effect
             if (this.options.moveParticlesOnHover) {

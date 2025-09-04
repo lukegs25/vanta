@@ -283,12 +283,9 @@ window.addEventListener('scroll', () => {
         hero.style.transform = `translateY(${rate}px)`;
     }
     
-    // Fade out VANTA text on scroll
+    // Keep VANTA title static (no scroll-based opacity changes)
     if (heroTitle) {
-        const fadeStart = 0;
-        const fadeEnd = 150; // Start fading after 150px of scroll (earlier fade)
-        const opacity = Math.max(0, 1 - (scrolled - fadeStart) / (fadeEnd - fadeStart));
-        heroTitle.style.setProperty('opacity', Math.max(0, opacity), 'important');
+        heroTitle.style.setProperty('opacity', 1, 'important');
     }
 });
 
@@ -350,7 +347,101 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         console.log('Global video element not found!');
     }
+    
+    // Initialize cursor pixel trail
+    initCursorPixelTrail();
 });
+
+// Cursor Pixel Trail functionality
+function initCursorPixelTrail() {
+    const canvas = document.createElement('canvas');
+    canvas.style.position = 'fixed';
+    canvas.style.top = '0';
+    canvas.style.left = '0';
+    canvas.style.width = '100vw';
+    canvas.style.height = '100vh';
+    canvas.style.pointerEvents = 'none';
+    canvas.style.zIndex = '9999';
+    canvas.style.background = 'transparent';
+    document.body.appendChild(canvas);
+
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+    let animationId = null;
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+
+    const config = {
+        color: '#ffffff',
+        minSize: 2,
+        maxSize: 4,
+        lifeMs: 500,
+        speed: 0.25,
+        spawnPerMove: 3,
+        maxParticles: 600
+    };
+
+    function addParticles(x, y) {
+        const now = performance.now();
+        for (let i = 0; i < config.spawnPerMove; i++) {
+            const angle = Math.random() * Math.PI * 2;
+            const speed = config.speed * (0.5 + Math.random());
+            const size = config.minSize + Math.random() * (config.maxSize - config.minSize);
+            particles.push({
+                x: x,
+                y: y,
+                vx: Math.cos(angle) * speed,
+                vy: Math.sin(angle) * speed,
+                size: size,
+                startTime: now
+            });
+        }
+        if (particles.length > config.maxParticles) {
+            particles.splice(0, particles.length - config.maxParticles);
+        }
+        if (!animationId) {
+            animationId = requestAnimationFrame(animate);
+        }
+    }
+
+    function animate(timestamp) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles = particles.filter(p => {
+            const elapsed = timestamp - p.startTime;
+            if (elapsed >= config.lifeMs) return false;
+            const t = elapsed / config.lifeMs;
+            p.x += p.vx;
+            p.y += p.vy;
+            const alpha = 1 - t;
+            ctx.fillStyle = `rgba(255,255,255,${alpha})`;
+            ctx.fillRect(p.x, p.y, p.size, p.size);
+            return true;
+        });
+        if (particles.length > 0) {
+            animationId = requestAnimationFrame(animate);
+        } else {
+            animationId = null;
+        }
+    }
+
+    const handleMove = (e) => {
+        addParticles(e.clientX, e.clientY);
+    };
+
+    document.addEventListener('mousemove', handleMove);
+    document.addEventListener('touchmove', (e) => {
+        if (e.touches && e.touches.length > 0) {
+            const t = e.touches[0];
+            addParticles(t.clientX, t.clientY);
+        }
+    }, { passive: true });
+}
 
 
 
