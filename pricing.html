@@ -59,6 +59,7 @@
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script src="components/ui/StripeLinks.js"></script>
   <script src="particles.js"></script>
   <script src="script.js"></script>
   <script>
@@ -194,6 +195,15 @@
     ];
 
     function PricingCard({ plan, isOpen, onToggle, isPopular }) {
+      const handleGetStarted = () => {
+        // Map plan name to link keys; default to contact if undefined
+        const key = plan.name === 'Basic' ? 'checkoutBasic'
+          : plan.name === 'Pro' ? 'checkoutPro'
+          : plan.name === 'Premium' ? 'checkoutPremium'
+          : 'contact';
+        const href = (window.VANTA_LINKS && window.VANTA_LINKS[key]) || 'index.html#contact';
+        window.location.href = href;
+      };
       return (
         <div className="pricing-card" style={{
           background: 'rgba(20, 20, 20, 0.65)',
@@ -266,6 +276,7 @@
             </div>
           )}
           <button
+            onClick={handleGetStarted}
             style={{
               marginTop: 8,
               width: '100%',
