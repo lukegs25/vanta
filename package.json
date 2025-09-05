@@ -4,8 +4,8 @@
   "description": "A modern, responsive website built with HTML, CSS, and JavaScript. This website features a clean design with smooth animations, mobile responsiveness, and interactive elements.",
   "main": "script.js",
   "scripts": {
-    "dev": "npx http-server . -p 3001 -o -c-1",
-    "start": "npx http-server . -p 3001 -o -c-1",
+    "dev": "npx http-server . -p 3001 -o",
+    "start": "npx http-server . -p 3001 -o",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "echo '✅ Use pnpm commands: pnpm add, pnpm remove, pnpm install'"
   },

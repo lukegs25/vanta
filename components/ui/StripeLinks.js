@@ -9,9 +9,9 @@
     work: 'index.html#work',
     pricing: 'pricing.html',
     // Replace with your actual checkout/lead URLs as needed:
-    checkoutBasic: 'https://buy.stripe.com/eVqcMY0aL26M2Cq5GJcbC06',
-    checkoutPro: 'https://buy.stripe.com/dRm9AMg9JcLq2Cq0mpcbC05',
-    checkoutPremium: 'https://buy.stripe.com/28E9AMaPpcLq0uiedfcbC04'
+    checkoutBasic: https://buy.stripe.com/eVqcMY0aL26M2Cq5GJcbC06,
+    checkoutPro: https://buy.stripe.com/dRm9AMg9JcLq2Cq0mpcbC05,
+    checkoutPremium: https://buy.stripe.com/28E9AMaPpcLq0uiedfcbC04
   };
 
   // Expose as global for easy usage in inline scripts
