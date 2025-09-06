@@ -35,5 +35,8 @@
     "three": "^0.180.0",
     "three-globe": "^2.44.0",
     "tw-animate-css": "^1.3.7"
+  },
+  "devDependencies": {
+    "shadcn": "^3.2.1"
   }
 }

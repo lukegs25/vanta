@@ -19,6 +19,226 @@
       0% { background-position: 200% center; }
       100% { background-position: -200% center; }
     }
+    
+    /* Focus card effects for pricing cards */
+    .pricing-card {
+      transition: all 0.3s ease !important;
+    }
+    
+    .pricing-card.focus-blur {
+      filter: blur(2px) !important;
+      transform: scale(0.98) !important;
+      opacity: 0.7 !important;
+    }
+    
+    .pricing-card.focus-active {
+      transform: scale(1.02) !important;
+      z-index: 10 !important;
+    }
+    
+    /* Special styling for brand scaling card */
+    .brand-scaling-card.focus-active {
+      transform: scale(1.01) !important;
+      box-shadow: 0 15px 40px rgba(74, 144, 226, 0.4) !important;
+      border-color: rgba(74, 144, 226, 0.7) !important;
+    }
+    
+    .brand-scaling-card.focus-blur {
+      transform: scale(0.99) !important;
+    }
+    
+    /* Signup Modal Styles */
+    .signup-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+    }
+    
+    .signup-modal.show {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .signup-form-container {
+      background: rgba(20, 20, 30, 0.95);
+      border: 1px solid rgba(74, 144, 226, 0.3);
+      border-radius: 20px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 400px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+      transform: scale(0.9);
+      transition: transform 0.3s ease;
+    }
+    
+    .signup-modal.show .signup-form-container {
+      transform: scale(1);
+    }
+    
+    .signup-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .form-label {
+      color: #e6efff;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .form-input {
+      padding: 0.75rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+      outline: none;
+      border-color: #4a90e2;
+      background: rgba(74, 144, 226, 0.1);
+      box-shadow: 
+        0 0 0 2px rgba(74, 144, 226, 0.3),
+        0 0 15px rgba(74, 144, 226, 0.4),
+        0 0 25px rgba(74, 144, 226, 0.2),
+        inset 0 0 10px rgba(74, 144, 226, 0.1);
+      transform: translateY(-1px);
+    }
+    
+    .form-input:hover {
+      border-color: rgba(74, 144, 226, 0.5);
+      background: rgba(74, 144, 226, 0.05);
+      box-shadow: 0 0 8px rgba(74, 144, 226, 0.2);
+    }
+    
+    .form-input::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+    
+    .signup-btn {
+      background: linear-gradient(135deg, #4a90e2 0%, #ffffff 100%);
+      color: #0a0a0a;
+      border: none;
+      border-radius: 8px;
+      padding: 0.75rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 0.5rem;
+      box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+    }
+    
+    .signup-btn:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 
+        0 8px 30px rgba(74, 144, 226, 0.5),
+        0 0 20px rgba(74, 144, 226, 0.4),
+        0 0 40px rgba(74, 144, 226, 0.2);
+      background: linear-gradient(135deg, #5ba0f2 0%, #ffffff 100%);
+    }
+    
+    .signup-btn:active {
+      transform: translateY(-1px) scale(0.98);
+      box-shadow: 
+        0 4px 20px rgba(74, 144, 226, 0.6),
+        0 0 15px rgba(74, 144, 226, 0.5);
+    }
+    
+    .signup-btn:disabled {
+      opacity: 0.7;
+      transform: none;
+      box-shadow: 0 2px 10px rgba(74, 144, 226, 0.2);
+      cursor: not-allowed;
+    }
+    
+    .social-buttons {
+      display: flex;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+    
+    .social-btn {
+      flex: 1;
+      padding: 0.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.05);
+      color: white;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .social-btn:hover {
+      border-color: #4a90e2;
+      background: rgba(74, 144, 226, 0.15);
+      box-shadow: 
+        0 0 10px rgba(74, 144, 226, 0.3),
+        0 0 20px rgba(74, 144, 226, 0.2);
+      transform: translateY(-2px);
+      color: #e6efff;
+    }
+    
+    .social-btn:active {
+      transform: translateY(0);
+      box-shadow: 
+        0 0 5px rgba(74, 144, 226, 0.4),
+        0 0 10px rgba(74, 144, 226, 0.2);
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    .close-btn:hover {
+      opacity: 1;
+    }
+    
+    .modal-title {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+    
+    .modal-subtitle {
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      font-size: 0.9rem;
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
@@ -62,10 +282,21 @@
   <script src="particles.js"></script>
   <script src="script.js"></script>
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
+    function initializePricingCardEffects() {
       const pricingCards = document.querySelectorAll('.pricing-card');
+      if (pricingCards.length === 0) {
+        // Retry after a short delay if cards aren't rendered yet
+        setTimeout(initializePricingCardEffects, 100);
+        return;
+      }
+      
       pricingCards.forEach((card, index) => {
-        card.addEventListener('mouseenter', () => {
+        // Remove existing listeners to avoid duplicates
+        card.removeEventListener('mouseenter', card._mouseEnterHandler);
+        card.removeEventListener('mouseleave', card._mouseLeaveHandler);
+        
+        // Create new handlers
+        card._mouseEnterHandler = () => {
           pricingCards.forEach((other, i) => {
             if (i !== index) {
               other.classList.add('focus-blur');
@@ -73,14 +304,25 @@
               other.classList.add('focus-active');
             }
           });
-        });
-        card.addEventListener('mouseleave', () => {
+        };
+        
+        card._mouseLeaveHandler = () => {
           pricingCards.forEach((other) => {
             other.classList.remove('focus-blur', 'focus-active');
           });
-        });
+        };
+        
+        // Add new listeners
+        card.addEventListener('mouseenter', card._mouseEnterHandler);
+        card.addEventListener('mouseleave', card._mouseLeaveHandler);
       });
-    });
+    }
+    
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', initializePricingCardEffects);
+    
+    // Also initialize after React renders (backup)
+    setTimeout(initializePricingCardEffects, 500);
   </script>
 
   <script type="text/babel">
@@ -266,6 +508,7 @@
             </div>
           )}
           <button
+            className="get-started-btn"
             style={{
               marginTop: 8,
               width: '100%',
@@ -273,12 +516,43 @@
               color: '#0a0a0a',
               border: 'none',
               borderRadius: 8,
-              padding: '14px 0',
+              padding: '16px 0',
               fontWeight: 'bold',
               fontSize: 18,
+              cursor: 'pointer',
+              transition: 'all 0.3s ease',
+              position: 'relative',
+              overflow: 'hidden',
               boxShadow: isPopular
                 ? '0 0 24px 4px rgba(74,144,226,0.45)'
-                : '0 0 14px 2px rgba(255,255,255,0.15)'
+                : '0 0 14px 2px rgba(255,255,255,0.15)',
+              transform: 'translateY(0)',
+            }}
+            onMouseEnter={(e) => {
+              e.target.style.transform = 'translateY(-3px) scale(1.02)';
+              e.target.style.boxShadow = isPopular
+                ? '0 8px 35px 6px rgba(74,144,226,0.7)'
+                : '0 8px 25px 4px rgba(255,255,255,0.35)';
+              e.target.style.background = 'linear-gradient(135deg, #5ba0f2 0%, #ffffff 100%)';
+            }}
+            onMouseLeave={(e) => {
+              e.target.style.transform = 'translateY(0) scale(1)';
+              e.target.style.boxShadow = isPopular
+                ? '0 0 24px 4px rgba(74,144,226,0.45)'
+                : '0 0 14px 2px rgba(255,255,255,0.15)';
+              e.target.style.background = 'linear-gradient(135deg, #4a90e2 0%, #ffffff 100%)';
+            }}
+            onMouseDown={(e) => {
+              e.target.style.transform = 'translateY(1px) scale(0.98)';
+              e.target.style.boxShadow = isPopular
+                ? '0 2px 15px 2px rgba(74,144,226,0.6)'
+                : '0 2px 10px 1px rgba(255,255,255,0.25)';
+            }}
+            onMouseUp={(e) => {
+              e.target.style.transform = 'translateY(-3px) scale(1.02)';
+              e.target.style.boxShadow = isPopular
+                ? '0 8px 35px 6px rgba(74,144,226,0.7)'
+                : '0 8px 25px 4px rgba(255,255,255,0.35)';
             }}
           >GET STARTED</button>
         </div>
@@ -325,6 +599,17 @@
           particlesRef.current = null;
           if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
         };
+      }, []);
+
+      // Initialize focus card effects after component mounts
+      useEffect(() => {
+        const timer = setTimeout(() => {
+          if (typeof initializePricingCardEffects === 'function') {
+            initializePricingCardEffects();
+          }
+        }, 100);
+        
+        return () => clearTimeout(timer);
       }, []);
 
       return (
@@ -374,7 +659,7 @@
             display: 'flex',
             justifyContent: 'center'
           }}>
-            <div ref={brandContainerRef} style={{
+            <div ref={brandContainerRef} className="pricing-card brand-scaling-card" style={{
               maxWidth: 1200,
               width: '100%',
               padding: 24,
@@ -397,16 +682,44 @@
                 marginBottom: 20,
                 textShadow: '0 0 12px rgba(255,255,255,0.25)'
               }}>Free plus % Value Added</p>
-              <a href="index.html#contact" style={{
-                display: 'inline-block',
-                padding: '12px 24px',
-                borderRadius: 10,
-                background: 'linear-gradient(135deg, #4a90e2 0%, #ffffff 100%)',
-                color: '#0a0a0a',
-                fontWeight: 'bold',
-                textDecoration: 'none',
-                boxShadow: '0 0 24px 4px rgba(74,144,226,0.45)'
-              }}>Get Started</a>
+              <button 
+                className="brand-scaling-btn"
+                style={{
+                  display: 'inline-block',
+                  padding: '14px 28px',
+                  borderRadius: 10,
+                  background: 'linear-gradient(135deg, #4a90e2 0%, #ffffff 100%)',
+                  color: '#0a0a0a',
+                  fontWeight: 'bold',
+                  fontSize: '16px',
+                  border: 'none',
+                  cursor: 'pointer',
+                  transition: 'all 0.3s ease',
+                  transform: 'translateY(0)',
+                  boxShadow: '0 0 24px 4px rgba(74,144,226,0.45)'
+                }}
+                onClick={() => {
+                  document.getElementById('signupModal').classList.add('show');
+                }}
+                onMouseEnter={(e) => {
+                  e.target.style.transform = 'translateY(-4px) scale(1.05)';
+                  e.target.style.boxShadow = '0 12px 40px 8px rgba(74,144,226,0.8)';
+                  e.target.style.background = 'linear-gradient(135deg, #5ba0f2 0%, #ffffff 100%)';
+                }}
+                onMouseLeave={(e) => {
+                  e.target.style.transform = 'translateY(0) scale(1)';
+                  e.target.style.boxShadow = '0 0 24px 4px rgba(74,144,226,0.45)';
+                  e.target.style.background = 'linear-gradient(135deg, #4a90e2 0%, #ffffff 100%)';
+                }}
+                onMouseDown={(e) => {
+                  e.target.style.transform = 'translateY(2px) scale(0.95)';
+                  e.target.style.boxShadow = '0 4px 20px 2px rgba(74,144,226,0.6)';
+                }}
+                onMouseUp={(e) => {
+                  e.target.style.transform = 'translateY(-4px) scale(1.05)';
+                  e.target.style.boxShadow = '0 12px 40px 8px rgba(74,144,226,0.8)';
+                }}
+              >Get Started</button>
             </div>
           </div>
         </div>
@@ -415,6 +728,99 @@
 
     const root = ReactDOM.createRoot(document.getElementById('root'));
     root.render(<PricingSection />);
+  </script>
+
+  <!-- Signup Modal -->
+  <div id="signupModal" class="signup-modal">
+    <div class="signup-form-container">
+      <button class="close-btn" onclick="document.getElementById('signupModal').classList.remove('show')">&times;</button>
+      <h2 class="modal-title">Join Brand Scaling with Ads</h2>
+      <form class="signup-form" onsubmit="handleSignupSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="firstName">First Name</label>
+          <input class="form-input" type="text" id="firstName" name="firstName" placeholder="John" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="lastName">Last Name</label>
+          <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Doe" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email Address</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="john.doe@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="company">Company (Optional)</label>
+          <input class="form-input" type="text" id="company" name="company" placeholder="Your Company">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="phone">Phone Number</label>
+          <input class="form-input" type="tel" id="phone" name="phone" placeholder="+1 (555) 123-4567" required>
+        </div>
+        <button type="submit" class="signup-btn">Get Started with Brand Scaling</button>
+      </form>
+      <div class="modal-subtitle">Or sign up with</div>
+      <div class="social-buttons">
+        <button type="button" class="social-btn" onclick="alert('GitHub signup coming soon!')">GitHub</button>
+        <button type="button" class="social-btn" onclick="alert('Google signup coming soon!')">Google</button>
+        <button type="button" class="social-btn" onclick="alert('LinkedIn signup coming soon!')">LinkedIn</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function handleSignupSubmit(event) {
+      event.preventDefault();
+      
+      // Get form data
+      const formData = new FormData(event.target);
+      const data = {
+        firstName: formData.get('firstName'),
+        lastName: formData.get('lastName'),
+        email: formData.get('email'),
+        company: formData.get('company'),
+        phone: formData.get('phone'),
+        service: 'Brand Scaling with Ads'
+      };
+      
+      // Show loading state
+      const submitBtn = event.target.querySelector('.signup-btn');
+      const originalText = submitBtn.textContent;
+      submitBtn.textContent = 'Submitting...';
+      submitBtn.disabled = true;
+      
+      // Simulate API call (replace with actual endpoint)
+      setTimeout(() => {
+        alert(`Thank you ${data.firstName}! We'll contact you at ${data.email} to discuss your Brand Scaling with Ads needs.`);
+        
+        // Reset form and close modal
+        event.target.reset();
+        document.getElementById('signupModal').classList.remove('show');
+        
+        // Reset button
+        submitBtn.textContent = originalText;
+        submitBtn.disabled = false;
+        
+        // In a real application, you would send this data to your backend:
+        console.log('Signup data:', data);
+        
+        // You could also integrate with your existing contact form endpoint
+        // or send to a CRM system
+      }, 2000);
+    }
+    
+    // Close modal when clicking outside
+    document.getElementById('signupModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        this.classList.remove('show');
+      }
+    });
+    
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.getElementById('signupModal').classList.remove('show');
+      }
+    });
   </script>
 </body>
 </html>
