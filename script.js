@@ -605,40 +605,5 @@ function initCursorPixelTrail() {
     }, { passive: true });
 }
 
-// Hide/show navbar on scroll direction
-(function initNavbarScrollHide() {
-    const navbar = document.querySelector('.navbar');
-    if (!navbar) return;
-
-    let lastScrollY = window.pageYOffset;
-    let ticking = false;
-
-    function onScroll() {
-        const currentY = window.pageYOffset;
-        const isScrollingDown = currentY > lastScrollY && currentY > 20;
-
-        if (isScrollingDown) {
-            navbar.classList.remove('navbar--visible');
-            navbar.classList.add('navbar--hidden');
-        } else {
-            navbar.classList.remove('navbar--hidden');
-            navbar.classList.add('navbar--visible');
-        }
-
-        lastScrollY = currentY;
-        ticking = false;
-    }
-
-    window.addEventListener('scroll', () => {
-        if (!ticking) {
-            window.requestAnimationFrame(onScroll);
-            ticking = true;
-        }
-    });
-
-    // Ensure visible on load
-    navbar.classList.add('navbar--visible');
-})();
-
 
 
