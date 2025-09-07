@@ -284,6 +284,170 @@ window.addEventListener('scroll', () => {
     }
 });
 
+// Apple Cards Carousel Implementation
+class AppleCardsCarousel {
+    constructor(container, items) {
+        this.container = container;
+        this.items = items;
+        this.currentIndex = 0;
+        this.canScrollLeft = false;
+        this.canScrollRight = true;
+        this.init();
+    }
+
+    init() {
+        this.createHTML();
+        this.attachEventListeners();
+        this.checkScrollability();
+    }
+
+    createHTML() {
+        const carouselHTML = `
+            <div class="apple-carousel-wrapper">
+                <div class="apple-carousel-scroll" id="carousel-scroll">
+                    <div class="apple-carousel-content">
+                        ${this.items.map((item, index) => this.createCard(item, index)).join('')}
+                    </div>
+                </div>
+                <div class="apple-carousel-controls">
+                    <button class="carousel-btn carousel-btn-left" id="scroll-left" disabled>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M15 18l-6-6 6-6"/>
+                        </svg>
+                    </button>
+                    <button class="carousel-btn carousel-btn-right" id="scroll-right">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 18l6-6-6-6"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        `;
+        this.container.innerHTML = carouselHTML;
+    }
+
+    createCard(item, index) {
+        const isVideo = item.src.endsWith('.mp4') || item.src.endsWith('.mov');
+        const mediaElement = isVideo 
+            ? `<video class="card-media" autoplay muted loop><source src="${item.src}" type="video/mp4"></video>`
+            : `<img class="card-media" src="${item.src}" alt="">`;
+
+        return `
+            <div class="apple-card" style="animation-delay: ${index * 0.2}s">
+                <div class="card-content">
+                    ${mediaElement}
+                </div>
+            </div>
+        `;
+    }
+
+    attachEventListeners() {
+        const scrollContainer = document.getElementById('carousel-scroll');
+        const leftBtn = document.getElementById('scroll-left');
+        const rightBtn = document.getElementById('scroll-right');
+
+        leftBtn.addEventListener('click', () => this.scrollLeft());
+        rightBtn.addEventListener('click', () => this.scrollRight());
+        scrollContainer.addEventListener('scroll', () => this.checkScrollability());
+    }
+
+    scrollLeft() {
+        const container = document.getElementById('carousel-scroll');
+        container.scrollBy({ left: -300, behavior: 'smooth' });
+    }
+
+    scrollRight() {
+        const container = document.getElementById('carousel-scroll');
+        container.scrollBy({ left: 300, behavior: 'smooth' });
+    }
+
+    checkScrollability() {
+        const container = document.getElementById('carousel-scroll');
+        const leftBtn = document.getElementById('scroll-left');
+        const rightBtn = document.getElementById('scroll-right');
+
+        if (container) {
+            const { scrollLeft, scrollWidth, clientWidth } = container;
+            this.canScrollLeft = scrollLeft > 0;
+            this.canScrollRight = scrollLeft < scrollWidth - clientWidth;
+
+            leftBtn.disabled = !this.canScrollLeft;
+            rightBtn.disabled = !this.canScrollRight;
+        }
+    }
+}
+
+// Initialize Apple Cards Carousel with our work data
+function initializeAppleCarousel() {
+    const workData = [
+        {
+            src: "public/our work/Flower Power Draft.png",
+            title: "Flower Power",
+            category: "Creative Design",
+            content: "Vibrant floral-inspired design bringing nature's beauty into modern branding."
+        },
+        {
+            src: "public/our work/Strawberries and Cream .mp4",
+            title: "Strawberries and Cream",
+            category: "Video Production",
+            content: "Delicious visual storytelling showcasing premium ingredients with cinematic quality."
+        },
+        {
+            src: "public/our work/St Pattys Version of their Ad.mov",
+            title: "St. Patrick's Day Campaign",
+            category: "Video Production", 
+            content: "Festive seasonal advertising campaign with engaging motion graphics and storytelling."
+        },
+        {
+            src: "public/our work/Homesick Hawaii.png",
+            title: "Homesick Hawaii",
+            category: "Brand Design",
+            content: "Tropical-inspired branding capturing the essence of island paradise with modern design elements."
+        },
+        {
+            src: "public/our work/Homesick California.png", 
+            title: "Homesick California",
+            category: "Brand Design",
+            content: "California dreaming brought to life through vibrant colors and contemporary aesthetics."
+        },
+        {
+            src: "public/our work/Homesick Utah.png",
+            title: "Homesick Utah",
+            category: "Brand Design", 
+            content: "Mountain-inspired design reflecting the natural beauty and rugged landscapes of Utah."
+        },
+        {
+            src: "public/our work/Linens and Surf.jpg",
+            title: "Linens and Surf",
+            category: "Photography",
+            content: "Lifestyle photography capturing the perfect blend of comfort and coastal living."
+        },
+        {
+            src: "public/our work/Ochre Heart Scent Draft.png",
+            title: "Ochre Heart Scent",
+            category: "Product Design",
+            content: "Sophisticated fragrance branding with earthy tones and elegant typography."
+        },
+        {
+            src: "public/our work/Pura Pantone Poster.png",
+            title: "Pura Pantone Collection",
+            category: "Print Design",
+            content: "Bold color exploration showcasing the power of Pantone in modern design applications."
+        },
+        {
+            src: "public/our work/Scent the Halls Final.png",
+            title: "Scent the Halls",
+            category: "Holiday Campaign",
+            content: "Festive holiday branding combining seasonal warmth with contemporary design elements."
+        }
+    ];
+
+    const container = document.getElementById('apple-carousel-container');
+    if (container) {
+        new AppleCardsCarousel(container, workData);
+    }
+}
+
 // Enhanced video loading and autoplay handling
 document.addEventListener('DOMContentLoaded', () => {
     // Ensure global video background plays immediately
@@ -345,6 +509,9 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize cursor pixel trail
     initCursorPixelTrail();
+    
+    // Initialize Apple Cards Carousel
+    initializeAppleCarousel();
 });
 
 // Cursor Pixel Trail functionality
@@ -437,6 +604,41 @@ function initCursorPixelTrail() {
         }
     }, { passive: true });
 }
+
+// Hide/show navbar on scroll direction
+(function initNavbarScrollHide() {
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    let lastScrollY = window.pageYOffset;
+    let ticking = false;
+
+    function onScroll() {
+        const currentY = window.pageYOffset;
+        const isScrollingDown = currentY > lastScrollY && currentY > 20;
+
+        if (isScrollingDown) {
+            navbar.classList.remove('navbar--visible');
+            navbar.classList.add('navbar--hidden');
+        } else {
+            navbar.classList.remove('navbar--hidden');
+            navbar.classList.add('navbar--visible');
+        }
+
+        lastScrollY = currentY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            window.requestAnimationFrame(onScroll);
+            ticking = true;
+        }
+    });
+
+    // Ensure visible on load
+    navbar.classList.add('navbar--visible');
+})();
 
 
 

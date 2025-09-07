@@ -16,6 +16,7 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
+            <div class="floating-nav">
             <ul class="nav-menu">
                 <li class="nav-item">
                     <a href="#home" class="nav-link active">HOME</a>
@@ -51,6 +52,7 @@
                     <a href="#contact" class="nav-link">CONTACT</a>
                 </li>
             </ul>
+            </div>
         </div>
     </nav>
 
@@ -126,50 +128,36 @@
     <!-- Work Section -->
     <section id="work" class="work">
         <div class="container">
-            <h2 class="section-title">My Work</h2>
-            <div class="work-grid">
-                <div class="work-card">
-                    <div class="work-icon">💻</div>
-                    <h3>Web Development</h3>
-                    <p>Modern, responsive websites built with cutting-edge technologies.</p>
-                </div>
-                <div class="work-card">
-                    <div class="work-icon">🎨</div>
-                    <h3>UI/UX Design</h3>
-                    <p>User-centered design solutions that enhance user experience.</p>
-                </div>
-                <div class="work-card">
-                    <div class="work-icon">⚡</div>
-                    <h3>Software Engineering</h3>
-                    <p>Scalable applications and systems architecture.</p>
-                </div>
+            <h2 class="section-title">Our Work</h2>
+            <div class="work-accomplished">
+                <ul class="work-stats">
+                    <li><strong>GENTRI</strong>: +200K followers in 6 months</li>
+                    <li><strong>McKenna Brown</strong>: +70% views increase</li>
+                    <li><strong>McDonald's (60+ locations)</strong>: localized content & engagement</li>
+                    <li><strong>Doxa Cleaning</strong>: 500k rev generated in 8 months</li>
+                </ul>
             </div>
+            <div id="apple-carousel-container"></div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <!-- Call to Action Section -->
+    <section id="contact" class="cta-section">
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
-            <div class="contact-content">
-                <form class="contact-form" action="https://formspree.io/f/xpwagvyk" method="POST">
-                    <div class="form-group">
-                        <input type="text" name="name" placeholder="Your Name" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Your Email" required>
-                    </div>
-                    <div class="form-group">
-                        <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary">Send Message</button>
-                </form>
-                <div class="contact-info">
-                    <h3>Contact Information</h3>
-                    <p>📍 Available for remote work worldwide</p>
-                    <p>📧 lukewills155@gmail.com</p>
-                    <p>📱 +1 (555) 123-4567</p>
-                </div>
+            <h2 class="cta-title">Unseen work. Unmatched results.</h2>
+            <div class="cta-button-container">
+                <button class="hover-border-gradient-btn" onclick="window.location.href='pricing.html'; setTimeout(() => { document.getElementById('signupModal').classList.add('show'); }, 100);">
+                    <div class="btn-content">Get Started</div>
+                    <div class="gradient-border"></div>
+                </button>
+            </div>
+            <div class="cta-video">
+                <video class="cta-video-el" autoplay muted loop playsinline>
+                    <source src="spinning%20logo.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="cta-email">
+                <p>📧 lukewills155@gmail.com | 📱 +1 (480) 708-7994 | Copyright © 2025 Vanta Marketing Co. All rights reserved</p>
             </div>
         </div>
     </section>
