@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.vantamarketing.co" }],
+      "destination": "https://vantamarketing.co/$1",
+      "permanent": true
+    }
+  ]
+}
+
+
+
