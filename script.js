@@ -84,6 +84,32 @@ document.addEventListener('DOMContentLoaded', () => {
     updateActiveNavLink();
 });
 
+// Hide navbar on scroll down, show on scroll up
+(() => {
+    let lastScrollY = window.pageYOffset;
+    const navbar = document.querySelector('.navbar');
+    if (!navbar) return;
+
+    const SCROLL_DELTA = 8; // minimum movement to toggle
+    const TOP_GUARD = 40;   // always show near top
+
+    function onScroll() {
+        const currentY = window.pageYOffset;
+        const diff = currentY - lastScrollY;
+
+        if (Math.abs(diff) > SCROLL_DELTA) {
+            if (diff > 0 && currentY > TOP_GUARD) {
+                navbar.classList.add('navbar--hidden');
+            } else {
+                navbar.classList.remove('navbar--hidden');
+            }
+            lastScrollY = currentY;
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+})();
+
 // Form submission handling
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
