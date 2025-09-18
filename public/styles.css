@@ -241,8 +241,10 @@ body {
     font-weight: 900;
     color: black;
     letter-spacing: 0.03em;
-    position: relative;
+    position: absolute;
     z-index: 2;
+    left: 50%;
+    transform: translateX(-50%);
     transform-origin: center;
     white-space: nowrap; /* never wrap VANTA to two lines */
     word-break: keep-all;
