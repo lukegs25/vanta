@@ -6,7 +6,8 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
     line-height: 1.6;
     color: white;
     background: #0a0a0a;
@@ -228,6 +229,32 @@ body {
 }
 
 .about-hero-title {
+    font-size: clamp(3rem, 8vw, 12rem);
+    line-height: 0.9;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 0.01em;
+    margin-bottom: 2rem;
+    text-shadow: 
+        0 0 4px rgba(255, 255, 255, 0.9),
+        0 0 8px rgba(255, 255, 255, 0.6),
+        0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* Work Hero Section */
+.work-hero {
+    min-height: 100vh;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    padding-top: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.work-hero-title {
     font-size: clamp(3rem, 8vw, 12rem);
     line-height: 0.9;
     font-weight: 900;
@@ -814,35 +841,34 @@ body {
 
 .work-accomplished {
     margin: 1.5rem 0 2rem 0;
-    text-align: center;
+    text-align: left;
 }
 
-.work-accomplished-title {
-    font-size: clamp(1.5rem, 4vw, 2.5rem);
-    font-weight: 900;
+.work-case {
+    margin-bottom: 6rem;
+    padding: 2.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.work-client {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 800;
     color: white;
-    text-shadow: 0 0 24px rgba(74,144,226,0.35);
-    letter-spacing: -0.01em;
-    margin-bottom: 0.75rem;
+    margin-bottom: 2rem;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
 }
 
-.work-stats {
-    list-style: none;
-    padding: 0;
+.work-description {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    font-weight: 500;
     margin: 0;
-    display: grid;
-    gap: 0.5rem;
-    justify-items: center;
-    text-align: center;
-}
-
-.work-stats li {
-    color: rgba(255,255,255,0.9);
-    font-size: clamp(1rem, 2.6vw, 1.25rem);
-}
-
-.work-stats li strong {
-    color: #ffffff;
 }
 
 /* Contact Section */
@@ -1128,11 +1154,17 @@ html {
 }
 
 .apple-carousel-controls {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
     display: flex;
-    justify-content: flex-end;
-    gap: 0.5rem;
-    margin-top: 1rem;
-    padding-right: 2rem;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    pointer-events: none;
+    z-index: 10;
 }
 
 .carousel-btn {
@@ -1148,6 +1180,7 @@ html {
     justify-content: center;
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
+    pointer-events: auto;
 }
 
 .carousel-btn:hover:not(:disabled) {
@@ -1180,7 +1213,7 @@ html {
     }
     
     .apple-carousel-controls {
-        padding-right: 1rem;
+        padding: 0 0.5rem;
     }
 }
 

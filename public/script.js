@@ -21,27 +21,28 @@ languages.forEach(lang => {
     });
 });
 
-// Navigation link state management
+// Navigation link state management - only for same-page anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        
-        // Remove active class from all navigation links
-        document.querySelectorAll('.nav-link').forEach(link => {
-            link.classList.remove('active');
-        });
-        
-        // Add active class to clicked link
-        this.classList.add('active');
-        
         // Smooth scroll to target section
         const target = document.querySelector(this.getAttribute('href'));
         if (target) {
+            e.preventDefault();
+            
+            // Remove active class from all navigation links
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Add active class to clicked link
+            this.classList.add('active');
+            
             target.scrollIntoView({
                 behavior: 'smooth',
                 block: 'start'
             });
         }
+        // If target doesn't exist on current page, let the browser handle the navigation normally
     });
 });
 
