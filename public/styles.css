@@ -44,9 +44,14 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     position: relative;
+}
+
+.nav-brand-logo {
+    height: 120px;
+    width: auto;
 }
 
 .nav-logo {
@@ -84,8 +89,10 @@ body {
     display: flex;
     list-style: none;
     align-items: center;
-    gap: 1rem;
-    margin: 0 auto;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0;
+    padding: 0 2rem;
 }
 
 .nav-item {
@@ -147,36 +154,21 @@ body {
     text-decoration: none !important;
 }
 
-.nav-link.active {
-    color: black;
-    font-weight: 900;
-    text-shadow: 
-        0 0 4px rgba(255, 255, 255, 0.9),
-        0 0 8px rgba(255, 255, 255, 0.85),
-        0 0 12px rgba(255, 255, 255, 0.8),
-        0 0 16px rgba(255, 255, 255, 0.8),
-        0 0 20px rgba(255, 255, 255, 0.75),
-        0 0 24px rgba(255, 255, 255, 0.7),
-        0 0 28px rgba(255, 255, 255, 0.65),
-        0 0 32px rgba(255, 255, 255, 0.6),
-        0 0 36px rgba(255, 255, 255, 0.5),
-        0 0 40px rgba(255, 255, 255, 0.4),
-        0 0 44px rgba(255, 255, 255, 0.35),
-        0 0 48px rgba(255, 255, 255, 0.3);
+
+.nav-logo {
+    height: 48px;
+    width: auto;
+    transition: all 0.3s ease;
+    display: block;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 8px;
+    border-radius: 8px;
 }
 
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 2px;
-    background: #4a90e2;
-    border-radius: 1px;
-    box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+.nav-link:hover .nav-logo {
+    filter: brightness(0) invert(1) drop-shadow(0 0 15px rgba(74, 144, 226, 0.8));
 }
+
 
 .nav-dot {
     color: #4a90e2;
@@ -193,10 +185,69 @@ body {
     background: transparent;
     position: relative;
     overflow: hidden;
+    padding-top: 120px; /* Add padding to account for fixed header */
+}
+
+/* Services Hero Section */
+.services-hero {
+    min-height: 100vh;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    padding-top: 120px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding-top: 120px; /* Add padding to account for fixed header */
+    text-align: center;
+}
+
+.services-hero-title {
+    font-size: clamp(3rem, 8vw, 12rem);
+    line-height: 0.9;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 0.01em;
+    margin-bottom: 2rem;
+    text-shadow: 
+        0 0 4px rgba(255, 255, 255, 0.9),
+        0 0 8px rgba(255, 255, 255, 0.6),
+        0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+/* About Hero Section */
+.about-hero {
+    min-height: 100vh;
+    background: transparent;
+    position: relative;
+    overflow: hidden;
+    padding-top: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.about-hero-title {
+    font-size: clamp(3rem, 8vw, 12rem);
+    line-height: 0.9;
+    font-weight: 900;
+    color: white;
+    letter-spacing: 0.01em;
+    margin-bottom: 2rem;
+    text-shadow: 
+        0 0 4px rgba(255, 255, 255, 0.9),
+        0 0 8px rgba(255, 255, 255, 0.6),
+        0 0 12px rgba(255, 255, 255, 0.4);
+}
+
+.services-hero-subtitle {
+    font-size: clamp(1.2rem, 3vw, 2.5rem);
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 
@@ -236,15 +287,16 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(3rem, 16vw, 30rem);
+    font-size: clamp(1.5rem, 6vw, 10rem) !important;
     line-height: 0.9;
     font-weight: 900;
-    color: black;
-    letter-spacing: 0.03em;
+    color: red !important;
+    letter-spacing: 0.01em;
     position: absolute;
     z-index: 2;
     left: 50%;
-    transform: translateX(-50%);
+    top: 40%;
+    transform: translate(-50%, -50%);
     transform-origin: center;
     white-space: nowrap; /* never wrap VANTA to two lines */
     word-break: keep-all;
@@ -301,9 +353,10 @@ body {
 }
 
 .letter:hover {
-    color: black;
-    text-shadow: none;
+    color: black !important;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.8), 0 0 24px rgba(255, 255, 255, 0.6), 0 0 32px rgba(255, 255, 255, 0.4) !important;
 }
+
 
 @keyframes vanta-fade-in {
     0% {
@@ -333,9 +386,156 @@ body {
 
 /* Services Section */
 .services {
-    padding: 8rem 0;
+    padding: 4rem 0;
     background: transparent;
     position: relative;
+}
+
+/* Service Section Layout */
+.service-section {
+    margin-bottom: 3rem; /* Reduced from 6rem */
+    padding: 1.5rem 0; /* Reduced from 3rem */
+}
+
+.service-content {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.service-content.reverse {
+    flex-direction: row-reverse;
+}
+
+.service-text {
+    flex: 1;
+    padding: 2rem; /* Reduced from 3rem */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.service-title {
+    font-size: clamp(1.5rem, 3.5vw, 2.5rem); /* Reduced from clamp(1.8rem, 4vw, 3rem) */
+    font-weight: 800;
+    color: white;
+    margin-bottom: 1rem; /* Reduced from 1.5rem */
+    letter-spacing: 0.05em;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+}
+
+.service-description {
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem); /* Reduced from clamp(1rem, 2vw, 1.2rem) */
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    margin-bottom: 1.5rem; /* Reduced from 2rem */
+    font-weight: 400;
+}
+
+.service-features {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.service-features li {
+    color: rgba(255, 255, 255, 0.8);
+    font-size: clamp(0.8rem, 1.6vw, 1rem); /* Reduced from clamp(0.9rem, 1.8vw, 1.1rem) */
+    margin-bottom: 0.6rem; /* Reduced from 0.8rem */
+    padding-left: 0;
+    font-weight: 500;
+}
+
+.service-features li:before {
+    content: "✓";
+    color: #ff6b6b;
+    font-weight: bold;
+    margin-right: 0.8rem;
+    font-size: 1.1em;
+}
+
+.service-image {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.service-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: none;
+    box-shadow: none;
+    transition: transform 0.3s ease;
+    display: block;
+}
+
+.service-img:hover {
+    transform: scale(1.02);
+}
+
+/* Placeholder styling for missing images */
+.service-img[src*="placeholder"] {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.2rem;
+    font-weight: 500;
+    position: relative;
+    min-height: 300px;
+}
+
+.service-img[src*="placeholder"]:before {
+    content: "Image Placeholder";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-content {
+        flex-direction: column !important;
+        gap: 0;
+        padding: 0;
+    }
+    
+    .service-content.reverse {
+        flex-direction: column !important;
+    }
+    
+    .service-text {
+        padding: 2rem;
+    }
+    
+    .service-image {
+        padding: 0;
+        order: -1;
+    }
+    
+    .service-img {
+        height: 250px;
+        width: 100%;
+    }
 }
 
 .services-grid {

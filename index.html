@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Creative Engineer - Portfolio</title>
     <link rel="icon" href="public/vanta.png" type="image/png">
-    <link rel="stylesheet" href="public/styles.css">
+        <link rel="stylesheet" href="public/styles.css?v=30">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -14,108 +14,45 @@
         <source src="public/Stars.mp4" type="video/mp4">
     </video>
     
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link active">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <span class="nav-dot">•</span>
-                </li>
-                <li class="nav-item">
-                    <a href="#services" class="nav-link">SERVICES</a>
-                </li>
-                <li class="nav-item">
-                    <span class="nav-dot">•</span>
-                </li>
-                <li class="nav-item">
-                    <a href="#about" class="nav-link">ABOUT</a>
-                </li>
-                <li class="nav-item">
-                    <span class="nav-dot">•</span>
-                </li>
-                <li class="nav-item">
-                    <a href="#work" class="nav-link">WORK</a>
-                </li>
-                <li class="nav-item">
-                    <span class="nav-dot">•</span>
-                </li>
-                <li class="nav-item">
-                    <a href="/pricing.html" class="nav-link">PRICING</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="services.html" class="nav-link">SERVICES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="about.html" class="nav-link">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#home" class="nav-link">
+                            <img src="public/transparent-v.png" alt="Vanta" class="nav-brand-logo">
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#work" class="nav-link">WORK</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="pricing.html" class="nav-link">PRICING</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
     
     <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-container">
-            <h1 class="hero-title">
-                <span class="letter">V</span>
-                <span class="letter">A</span>
-                <span class="letter">N</span>
-                <span class="letter">T</span>
-                <span class="letter">A</span>
-            </h1>
-            <h2 class="hero-subtitle">From Darkness. Into Light.</h2>
+                <h1 class="hero-title" style="color: black !important; font-size: clamp(1.5rem, 6vw, 10rem) !important; position: absolute; top: calc(30vh); left: 50%; transform: translate(-50%, -50%); letter-spacing: 0.01em; text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.8), 0 0 24px rgba(255, 255, 255, 0.6), 0 0 32px rgba(255, 255, 255, 0.4) !important;">
+                    <span class="letter" style="color: black !important; text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.8), 0 0 24px rgba(255, 255, 255, 0.6), 0 0 32px rgba(255, 255, 255, 0.4) !important;">V</span>
+                    <span class="letter" style="color: black !important; text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.8), 0 0 24px rgba(255, 255, 255, 0.6), 0 0 32px rgba(255, 255, 255, 0.4) !important;">A</span>
+                    <span class="letter" style="color: black !important; text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.8), 0 0 24px rgba(255, 255, 255, 0.6), 0 0 32px rgba(255, 255, 255, 0.4) !important;">N</span>
+                    <span class="letter" style="color: black !important; text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.8), 0 0 24px rgba(255, 255, 255, 0.6), 0 0 32px rgba(255, 255, 255, 0.4) !important;">T</span>
+                    <span class="letter" style="color: black !important; text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.8), 0 0 24px rgba(255, 255, 255, 0.6), 0 0 32px rgba(255, 255, 255, 0.4) !important;">A</span>
+                </h1>
+                <p class="scroll-text" style="position: absolute; top: calc(30vh + 8rem); left: 50%; transform: translate(-50%, -50%); color: white; font-size: clamp(0.8rem, 2vw, 1.2rem); font-weight: 400; letter-spacing: 0.1em; text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.4); opacity: 0.9;">Scroll for More</p>
         </div>
     </section>
     
-    <!-- Our Services Section -->
-    <section id="services" class="services">
-        <div class="container">
-            <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
-                    <h3>ROAS & Ad Management</h3>
-                    <p>We drive higher return on ad spend (ROAS) by managing targeted ad campaigns, continuously optimizing strategies, and ensuring every advertising dollar delivers measurable results.</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">📈</div>
-                    <h3>Growth Marketing</h3>
-                    <p>Follower campaigns (earned + paid) • Influencer collaborations • Viral video creation • Growth analytics & performance optimization</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
-                    <h3>Smart Engagement</h3>
-                    <p>Chatbots that convert • DM automation and response workflows • Geotargeted engagement campaigns</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">🧠</div>
-                    <h3>Content Engine</h3>
-                    <p>AI-generated content (reels, photos, blogs) • Content calendars & posting systems • Reels and TikToks tailored to trends</p>
-                </div>
-                <div class="service-card">
-                    <div class="service-icon">⚙️</div>
-                    <h3>AI Automation Services</h3>
-                    <p>Using our expertise, we delve deep into your organisation and consult you on how AI-driven automations could enhance your operations.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- About Section -->
-    <section id="about" class="about">
-        <div class="container">
-            <h2 class="section-title">About Us</h2>
-            <img src="/public/Team%203.png" alt="Vanta Team" class="about-team-image">
-            <div class="about-content">
-                <div class="about-text">
-                    <p>We are a team of marketers, creators, strategists, and experts on a mission to help businesses and individuals use AI to grow smarter and faster. We created Vanta to give brands real solutions, not just hype. By combining the latest AI tools with proven marketing and business experience, we help brands scale, reach new audiences, and operate more efficiently.</p>
-                    <p>If you want to grow your brand, build your audience, or turn attention into results, Vanta has the expertise and technology to help you scale, bringing your company...</p>
-                </div>
-                <div class="about-visual">
-                </div>
-            </div>
-            <!-- About section subtitle -->
-            <div class="about-subtitle">
-                <h3 class="hero-subtitle">From Darkness. Into Light.</h3>
-            </div>
-        </div>
-    </section>
     
     <!-- Work Section -->
     <section id="work" class="work">
