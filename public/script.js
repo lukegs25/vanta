@@ -408,61 +408,61 @@ class AppleCardsCarousel {
 function initializeAppleCarousel() {
     const workData = [
         {
-            src: "/public/our work/Flower Power Draft.png",
+            src: "public/our work/Flower Power Draft.png",
             title: "Flower Power",
             category: "Creative Design",
             content: "Vibrant floral-inspired design bringing nature's beauty into modern branding."
         },
         {
-            src: "/public/our work/Strawberries and Cream .mp4",
+            src: "public/our work/Strawberries and Cream .mp4",
             title: "Strawberries and Cream",
             category: "Video Production",
             content: "Delicious visual storytelling showcasing premium ingredients with cinematic quality."
         },
         {
-            src: "/public/our work/St Pattys Version of their Ad.mov",
+            src: "public/our work/St Pattys Version of their Ad.mov",
             title: "St. Patrick's Day Campaign",
             category: "Video Production", 
             content: "Festive seasonal advertising campaign with engaging motion graphics and storytelling."
         },
         {
-            src: "/public/our work/Homesick Hawaii.png",
+            src: "public/our work/Homesick Hawaii.png",
             title: "Homesick Hawaii",
             category: "Brand Design",
             content: "Tropical-inspired branding capturing the essence of island paradise with modern design elements."
         },
         {
-            src: "/public/our work/Homesick California.png", 
+            src: "public/our work/Homesick California.png", 
             title: "Homesick California",
             category: "Brand Design",
             content: "California dreaming brought to life through vibrant colors and contemporary aesthetics."
         },
         {
-            src: "/public/our work/Homesick Utah.png",
+            src: "public/our work/Homesick Utah.png",
             title: "Homesick Utah",
             category: "Brand Design", 
             content: "Mountain-inspired design reflecting the natural beauty and rugged landscapes of Utah."
         },
         {
-            src: "/public/our work/Linens and Surf.jpg",
+            src: "public/our work/Linens and Surf.jpg",
             title: "Linens and Surf",
             category: "Photography",
             content: "Lifestyle photography capturing the perfect blend of comfort and coastal living."
         },
         {
-            src: "/public/our work/Ochre Heart Scent Draft.png",
+            src: "public/our work/Ochre Heart Scent Draft.png",
             title: "Ochre Heart Scent",
             category: "Product Design",
             content: "Sophisticated fragrance branding with earthy tones and elegant typography."
         },
         {
-            src: "/public/our work/Pura Pantone Poster.png",
+            src: "public/our work/Pura Pantone Poster.png",
             title: "Pura Pantone Collection",
             category: "Print Design",
             content: "Bold color exploration showcasing the power of Pantone in modern design applications."
         },
         {
-            src: "/public/our work/Scent the Halls Final.png",
+            src: "public/our work/Scent the Halls Final.png",
             title: "Scent the Halls",
             category: "Holiday Campaign",
             content: "Festive holiday branding combining seasonal warmth with contemporary design elements."
@@ -477,6 +477,9 @@ function initializeAppleCarousel() {
 
 // Enhanced video loading and autoplay handling
 document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Apple Carousel
+    initializeAppleCarousel();
+    
     // Ensure global video background plays immediately
     const globalVideo = document.querySelector('.global-video-bg');
     if (globalVideo) {
@@ -537,8 +540,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Initialize cursor pixel trail
     initCursorPixelTrail();
     
-    // Initialize Apple Cards Carousel
-    initializeAppleCarousel();
+    // Initialize Services Carousel
+    initializeServicesCarousel();
+    
+    // Initialize Why Choose Us Carousel
+    initializeWhyChooseUsCarousel();
+    
 });
 
 // Cursor Pixel Trail functionality
@@ -631,6 +638,195 @@ function initCursorPixelTrail() {
         }
     }, { passive: true });
 }
+
+// Simple Services Carousel
+function initializeServicesCarousel() {
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    
+    if (!track || !prevBtn || !nextBtn) {
+        console.log('Services carousel elements not found');
+        return;
+    }
+    
+    let currentIndex = 0;
+    const cardWidth = 480;
+    const gap = 32;
+    const cardTotalWidth = cardWidth + gap;
+    const totalCards = track.children.length;
+    const maxVisibleCards = 3;
+    const maxIndex = totalCards - maxVisibleCards + 1;
+    function updateCarousel() {
+        const translateX = -currentIndex * cardTotalWidth;
+        track.style.transform = `translateX(${translateX}px)`;
+        
+        prevBtn.disabled = currentIndex === 0;
+        nextBtn.disabled = currentIndex >= maxIndex;
+    }
+    
+    prevBtn.addEventListener('click', () => {
+        if (currentIndex > 0) {
+            currentIndex--;
+            updateCarousel();
+        }
+    });
+    
+    nextBtn.addEventListener('click', () => {
+        if (currentIndex < maxIndex) {
+            currentIndex++;
+            updateCarousel();
+        }
+    });
+    
+    updateCarousel();
+    console.log('Services carousel initialized without auto-scroll');
+}
+
+// Why Choose Us Carousel
+let whyChooseUsCurrentIndex = 0;
+const whyChooseUsTrack = document.getElementById('whyChooseUsTrack');
+const whyChooseUsItems = document.querySelectorAll('.why-choose-us-item');
+const whyChooseUsPrevBtn = document.getElementById('whyChooseUsPrev');
+const whyChooseUsNextBtn = document.getElementById('whyChooseUsNext');
+
+function initializeWhyChooseUsCarousel() {
+    if (!whyChooseUsTrack || !whyChooseUsItems.length) {
+        console.log('Why Choose Us carousel elements not found');
+        return;
+    }
+    
+    console.log('Why Choose Us carousel initialized with', whyChooseUsItems.length, 'items');
+    
+    const itemWidth = 280; // min-width from CSS
+    const gap = 32; // 2rem gap
+    const originalItems = 10; // Number of original items (before duplication)
+    const totalItems = whyChooseUsItems.length; // Total items including duplicates
+    let autoScrollInterval;
+    let currentPosition = 0;
+    const scrollSpeed = 1.5; // pixels per frame
+    
+    function updateWhyChooseUsCarousel() {
+        // Simple continuous scroll - no centering, just continuous movement
+        const translateX = -currentPosition;
+        
+        whyChooseUsTrack.style.transform = `translateX(${translateX}px)`;
+        
+        // Seamless loop: when we've scrolled past ALL items (including duplicates), reset to beginning
+        if (currentPosition >= totalItems * (itemWidth + gap)) {
+            currentPosition = 0;
+        }
+        
+        console.log('Current position:', currentPosition, 'TranslateX:', translateX, 'Total items:', totalItems);
+    }
+    
+    function startAutoScroll() {
+        autoScrollInterval = setInterval(() => {
+            currentPosition += scrollSpeed;
+            updateWhyChooseUsCarousel();
+        }, 16); // ~60fps for smooth animation
+    }
+    
+    function stopAutoScroll() {
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+        }
+    }
+    
+    // Pause auto-scroll on hover
+    if (whyChooseUsTrack) {
+        whyChooseUsTrack.addEventListener('mouseenter', stopAutoScroll);
+        whyChooseUsTrack.addEventListener('mouseleave', startAutoScroll);
+    }
+    
+    // Initialize
+    updateWhyChooseUsCarousel();
+    
+    // Start auto-scroll
+    startAutoScroll();
+}
+
+// Contact Modal Functions
+function openContactModal() {
+    document.getElementById('contactModal').style.display = 'block';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeContactModal() {
+    document.getElementById('contactModal').style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside of it
+window.onclick = function(event) {
+    const modal = document.getElementById('contactModal');
+    if (event.target === modal) {
+        closeContactModal();
+    }
+}
+
+// Handle form submission
+document.addEventListener('DOMContentLoaded', function() {
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const phone = formData.get('phone');
+            const message = formData.get('message');
+            
+            // Show loading state
+            const submitBtn = contactForm.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+            
+            // Submit to Formspree
+            fetch('https://formspree.io/f/xblankqd', {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: name,
+                    email: email,
+                    phone: phone,
+                    message: message
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Show success message
+                    alert('Thank you for your message! We\'ll get back to you soon.');
+                    
+                    // Close modal
+                    closeContactModal();
+                    
+                    // Reset form
+                    contactForm.reset();
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Sorry, there was an error sending your message. Please try again or contact us directly.');
+            })
+            .finally(() => {
+                // Reset button state
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
+        });
+    }
+});
+
 
 
 

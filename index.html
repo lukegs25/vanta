@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Engineer - Portfolio</title>
+    <title>VANTA</title>
     <link rel="icon" href="public/vanta.png" type="image/png">
         <link rel="stylesheet" href="public/styles.css?v=34">
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a href="pricing.html" class="nav-link">PRICING</a>
                     </li>
+                    <li class="nav-item">
+                        <button class="contact-btn" onclick="openContactModal()">Contact Us</button>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -50,11 +53,173 @@
                     <span class="letter" style="color: black !important; text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.8), 0 0 24px rgba(255, 255, 255, 0.6), 0 0 32px rgba(255, 255, 255, 0.4) !important;">T</span>
                     <span class="letter" style="color: black !important; text-shadow: 0 0 8px rgba(255, 255, 255, 1), 0 0 16px rgba(255, 255, 255, 0.8), 0 0 24px rgba(255, 255, 255, 0.6), 0 0 32px rgba(255, 255, 255, 0.4) !important;">A</span>
                 </h1>
-                <p class="scroll-text" style="position: absolute; top: calc(30vh + 8rem); left: 50%; transform: translate(-50%, -50%); color: white; font-size: clamp(0.8rem, 2vw, 1.2rem); font-weight: 400; letter-spacing: 0.1em; text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.4); opacity: 0.9;">Scroll for More</p>
+                <p class="scroll-text" style="position: absolute; top: calc(30vh + 8rem); left: 50%; transform: translate(-50%, -50%); color: white; font-size: clamp(0.8rem, 2vw, 1.2rem); font-weight: 400; letter-spacing: 0.1em; text-shadow: 0 0 8px rgba(255, 255, 255, 0.8), 0 0 16px rgba(255, 255, 255, 0.6), 0 0 24px rgba(255, 255, 255, 0.4); opacity: 0.9; cursor: pointer;" onclick="document.querySelector('.services-section').scrollIntoView({ behavior: 'smooth' })">Scroll for More</p>
         </div>
     </section>
     
+    <!-- Our Services Section -->
+    <section class="services-section">
+        <div class="container">
+            <h2 class="services-title">OUR SERVICES</h2>
+            <div class="services-carousel">
+                <div class="carousel-track" id="carouselTrack">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="ROAS1.PNG" alt="ROAS & Ad Management">
+                        </div>
+                        <h3>ROAS & Ad Management</h3>
+                        <p>Maximize your return on ad spend with data-driven strategies and AI-powered optimization.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="truck 8.jpg" alt="Growth Marketing">
+                        </div>
+                        <h3>Growth Marketing</h3>
+                        <p>Scalable marketing strategies that drive sustainable growth and expand your market reach.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="roass2.PNG" alt="Smart Engagement">
+                        </div>
+                        <h3>Smart Engagement</h3>
+                        <p>Automated engagement solutions that convert prospects into customers through intelligent chatbots.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="ig.PNG" alt="Content Engine">
+                        </div>
+                        <h3>Content Engine</h3>
+                        <p>AI-powered content creation that keeps your brand relevant with trend-based content across platforms.</p>
+                    </div>
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="ig.PNG" alt="AI Automation Services">
+                        </div>
+                        <h3>AI Automation Services</h3>
+                        <p>Strategic AI implementation consulting that transforms your operations through intelligent automation.</p>
+                    </div>
+                </div>
+                <button class="carousel-btn prev" id="prevBtn">‹</button>
+                <button class="carousel-btn next" id="nextBtn">›</button>
+            </div>
+        </div>
+    </section>
     
+    <!-- Why Choose Us Section -->
+    <section class="why-choose-us-section">
+        <div class="container">
+            <h2 class="why-choose-us-title">Why Choose Us?</h2>
+        </div>
+        <div class="why-choose-us-carousel-full">
+            <div class="why-choose-us-track" id="whyChooseUsTrack">
+                <div class="why-choose-us-item">
+                    <span class="highlight">5x fleet expansion</span> in just 6 months
+                </div>
+                <div class="why-choose-us-item">
+                    77.6% of revenue directly attributed to <span class="highlight">digital ads</span>
+                </div>
+                <div class="why-choose-us-item">
+                    <span class="highlight">Consistent monthly growth</span> through algorithm optimization
+                </div>
+                <div class="why-choose-us-item">
+                    Scaled a startup service business to <span class="highlight">$500k+ in 1 year</span>
+                </div>
+                <div class="why-choose-us-item">
+                    Experience with <span class="highlight">major brands</span> McDonald's, Toyota, and AAA
+                </div>
+                <div class="why-choose-us-item">
+                    Predictable customer acquisition
+                </div>
+                <div class="why-choose-us-item">
+                    <span class="highlight">Data-driven growth</span> decisions
+                </div>
+                <div class="why-choose-us-item">
+                    <span class="highlight">Scalable systems</span> that grow with you
+                </div>
+                <div class="why-choose-us-item">
+                    <span class="highlight">Results-based Model</span> - we succeed only when you do
+                </div>
+                <div class="why-choose-us-item">
+                    <span class="highlight">Tailored strategies</span> for every different business
+                </div>
+                <!-- Duplicate items for seamless loop -->
+                <div class="why-choose-us-item">
+                    <span class="highlight">5x fleet expansion</span> in just 6 months
+                </div>
+                <div class="why-choose-us-item">
+                    77.6% of revenue directly attributed to <span class="highlight">digital ads</span>
+                </div>
+                <div class="why-choose-us-item">
+                    <span class="highlight">Consistent monthly growth</span> through algorithm optimization
+                </div>
+                <div class="why-choose-us-item">
+                    Scaled a startup service business to <span class="highlight">$500k+ in 1 year</span>
+                </div>
+                <div class="why-choose-us-item">
+                    Experience with <span class="highlight">major brands</span> McDonald's, Toyota, and AAA
+                </div>
+                <div class="why-choose-us-item">
+                    Predictable customer acquisition
+                </div>
+                <div class="why-choose-us-item">
+                    <span class="highlight">Data-driven growth</span> decisions
+                </div>
+                <div class="why-choose-us-item">
+                    <span class="highlight">Scalable systems</span> that grow with you
+                </div>
+                <div class="why-choose-us-item">
+                    <span class="highlight">Results-based Model</span> - we succeed only when you do
+                </div>
+                <div class="why-choose-us-item">
+                    <span class="highlight">Tailored strategies</span> for every different business
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Reviews Section -->
+    <section class="reviews-section">
+        <div class="container">
+            <h2 class="reviews-title">What Our Clients Say</h2>
+            <div class="reviews-grid">
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Vanta transformed our social media presence completely. Our engagement increased by 300% in just 3 months. Absolutely incredible results!"</p>
+                    <div class="review-author">- Sarah</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"The AI automation they implemented saved us 20 hours per week. Our team can now focus on what matters most - growing the business."</p>
+                    <div class="review-author">- Michael</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"From day one, Vanta understood our brand voice and created content that truly resonates with our audience. Game changer!"</p>
+                    <div class="review-author">- Jessica</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"Their data-driven approach helped us identify exactly what was working and what wasn't. ROI increased by 250% in 6 months."</p>
+                    <div class="review-author">- David</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"The team at Vanta is professional, responsive, and delivers results. They've become an extension of our marketing team."</p>
+                    <div class="review-author">- Amanda</div>
+                </div>
+                
+                <div class="review-card">
+                    <div class="review-stars">★★★★★</div>
+                    <p class="review-text">"We went from struggling to get noticed to being the go-to brand in our industry. Vanta made it happen."</p>
+                    <div class="review-author">- Ryan</div>
+                </div>
+            </div>
+        </div>
+    </section>
     
     <!-- Call to Action Section -->
     <section id="contact" class="cta-section">
@@ -76,6 +241,53 @@
             </div>
         </div>
     </section>
+    
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-modal-content">
+            <span class="contact-close" onclick="closeContactModal()">&times;</span>
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <strong>Instagram:</strong>
+                        <a href="https://instagram.com/officialvantamarketing" target="_blank">@officialvantamarketing</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email:</strong>
+                        <a href="mailto:officialvantamarketing@gmail.com">officialvantamarketing@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Phone:</strong>
+                        <a href="tel:+14807087994">(480) 708-7994</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send us a message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
     <script src="/public/particles.js"></script>
     <script src="/public/script.js"></script>
 </body>

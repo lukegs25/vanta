@@ -36,6 +36,9 @@
                     <li class="nav-item">
                         <a href="pricing.html" class="nav-link">PRICING</a>
                     </li>
+                    <li class="nav-item">
+                        <button class="contact-btn" onclick="openContactModal()">Contact Us</button>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -64,7 +67,7 @@
                         </ul>
                     </div>
                     <div class="service-image">
-                        <img src="public/placeholder-roas.jpg" alt="ROAS & Ad Management" class="service-img">
+                        <img src="ROAS1.PNG" alt="ROAS & Ad Management" class="service-img">
                     </div>
                 </div>
             </div>
@@ -73,7 +76,7 @@
             <div class="service-section">
                 <div class="service-content reverse">
                     <div class="service-image">
-                        <img src="public/placeholder-growth.jpg" alt="Growth Marketing" class="service-img">
+                        <img src="truck 8.jpg" alt="Growth Marketing" class="service-img">
                     </div>
                     <div class="service-text">
                         <h2 class="service-title">GROWTH MARKETING</h2>
@@ -92,7 +95,7 @@
             <div class="service-section">
                 <div class="service-content reverse">
                     <div class="service-image">
-                        <img src="public/placeholder-engagement.jpg" alt="Smart Engagement" class="service-img">
+                        <img src="roass2.PNG" alt="Smart Engagement" class="service-img">
                     </div>
                     <div class="service-text">
                         <h2 class="service-title">SMART ENGAGEMENT</h2>
@@ -111,7 +114,7 @@
             <div class="service-section">
                 <div class="service-content reverse">
                     <div class="service-image">
-                        <img src="public/placeholder-content.jpg" alt="Content Engine" class="service-img">
+                        <img src="ig.PNG" alt="Content Engine" class="service-img">
                     </div>
                     <div class="service-text">
                         <h2 class="service-title">CONTENT ENGINE</h2>
@@ -162,6 +165,52 @@
             </div>
         </div>
     </section>
+    
+    <!-- Contact Modal -->
+    <div id="contactModal" class="contact-modal">
+        <div class="contact-modal-content">
+            <span class="contact-close" onclick="closeContactModal()">&times;</span>
+            <div class="contact-info">
+                <h2>Get In Touch</h2>
+                <div class="contact-details">
+                    <div class="contact-item">
+                        <strong>Instagram:</strong>
+                        <a href="https://instagram.com/officialvantamarketing" target="_blank">@officialvantamarketing</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Email:</strong>
+                        <a href="mailto:officialvantamarketing@gmail.com">officialvantamarketing@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <strong>Phone:</strong>
+                        <a href="tel:+14807087994">(480) 708-7994</a>
+                    </div>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send us a message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </div>
     
     <script src="public/particles.js"></script>
     <script src="public/script.js"></script>

@@ -294,10 +294,13 @@
         <li class="nav-item">
           <a href="pricing.html" class="nav-link" style="opacity: 0.7;">PRICING</a>
         </li>
+        <li class="nav-item">
+          <button class="contact-btn" onclick="openContactModal()">Contact Us</button>
+        </li>
       </ul>
     </div>
   </nav>
-  <div id="root" style="position: relative; z-index: 2;"></div>
+  <div id="root" style="position: relative; z-index: 1; padding-top: 200px;"></div>
 
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
@@ -728,8 +731,7 @@
                   boxShadow: '0 0 24px 4px rgba(74,144,226,0.45)'
                 }}
                 onClick={() => {
-                  document.getElementById('signupModal').classList.add('show');
-                  document.body.classList.add('modal-open');
+                  openContactModal();
                 }}
                 onMouseEnter={(e) => {
                   e.target.style.transform = 'translateY(-4px) scale(1.05)';
@@ -887,6 +889,54 @@
       }
     });
   </script>
+  
+  <!-- Contact Modal -->
+  <div id="contactModal" class="contact-modal">
+      <div class="contact-modal-content">
+          <span class="contact-close" onclick="closeContactModal()">&times;</span>
+          <div class="contact-info">
+              <h2>Get In Touch</h2>
+              <div class="contact-details">
+                  <div class="contact-item">
+                      <strong>Instagram:</strong>
+                      <a href="https://instagram.com/officialvantamarketing" target="_blank">@officialvantamarketing</a>
+                  </div>
+                  <div class="contact-item">
+                      <strong>Email:</strong>
+                      <a href="mailto:officialvantamarketing@gmail.com">officialvantamarketing@gmail.com</a>
+                  </div>
+                  <div class="contact-item">
+                      <strong>Phone:</strong>
+                      <a href="tel:+14807087994">(480) 708-7994</a>
+                  </div>
+              </div>
+          </div>
+          <div class="contact-form">
+              <h3>Send us a message</h3>
+              <form id="contactForm">
+                  <div class="form-group">
+                      <label for="name">Name</label>
+                      <input type="text" id="name" name="name" placeholder="Your Name" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" id="email" name="email" placeholder="Your Email" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="phone">Phone Number</label>
+                      <input type="tel" id="phone" name="phone" placeholder="Your Phone Number" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="message">Message</label>
+                      <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                  </div>
+                  <button type="submit" class="submit-btn">Send Message</button>
+              </form>
+          </div>
+      </div>
+  </div>
+  
+  <script src="public/script.js"></script>
 </body>
 </html>
 
