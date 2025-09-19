@@ -493,7 +493,8 @@ body {
     align-items: center;
     padding: 0;
     background: rgba(255, 255, 255, 0.02);
-    height: 180px;
+    min-height: 300px;
+    max-height: 400px;
     overflow: hidden;
 }
 
@@ -564,10 +565,12 @@ body {
     .service-image {
         padding: 0;
         order: -1;
+        min-height: 250px;
+        max-height: 350px;
     }
     
     .service-img {
-        height: 250px;
+        height: 100%;
         width: 100%;
     }
 }
