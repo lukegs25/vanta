@@ -17,13 +17,12 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link active">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <span class="nav-dot">•</span>
-                </li>
+            <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <ul id="primary-navigation" class="nav-menu" role="menubar">
                 <li class="nav-item">
                     <a href="#services" class="nav-link">SERVICES</a>
                 </li>
@@ -32,6 +31,14 @@
                 </li>
                 <li class="nav-item">
                     <a href="#about" class="nav-link">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-dot">•</span>
+                </li>
+                <li class="nav-item nav-logo-item">
+                    <a href="#home" class="nav-link active" aria-label="Home">
+                        <img src="/public/transparent_v.png" alt="Vanta" class="nav-logo-img">
+                    </a>
                 </li>
                 <li class="nav-item">
                     <span class="nav-dot">•</span>
