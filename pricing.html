@@ -300,6 +300,31 @@
       </ul>
     </div>
   </nav>
+
+  <!-- Starter Package Deal Section -->
+  <section class="starter-section" style="position:relative;z-index:2;padding:4rem 0 2rem 0;">
+    <h1 class="starter-heading shimmer-text" style="text-align:center;font-size:clamp(2.25rem,8vw,6rem);font-weight:900;letter-spacing:0.02em;margin:0 0 1.5rem 0;display:inline-block;left:50%;transform:translateX(-50%);position:relative;background:linear-gradient(90deg,#ffffff,#4a90e2,#ffffff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;text-shadow:0 0 18px rgba(74,144,226,0.6);animation: shimmer 2.8s linear infinite;">Starter Package Deal</h1>
+    <div class="starter-box" style="max-width:960px;margin:0 auto 3rem auto;background:rgba(20,20,20,0.65);border:1px solid rgba(74,144,226,0.6);border-radius:16px;box-shadow:0 12px 36px rgba(74,144,226,0.25);padding:clamp(1.25rem,3vw,2rem);color:#e6efff;">
+      <div class="starter-title" style="text-align:center;font-size:clamp(2.5rem,8vw,4rem);font-weight:900;margin:0 0 0.75rem 0;color:#ffffff;">1 month free!</div>
+      <div style="text-align:left;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;margin:0 0 1rem 0;color:#bcd8ff;">Brand Scaling includes:</div>
+      <ul class="starter-bullets" style="margin:0;padding-left:1.25rem;font-size:clamp(1.1rem,2.5vw,1.4rem);line-height:1.6;">
+        <li>Meta ads</li>
+        <li>3 posts</li>
+        <li>2 videos</li>
+      </ul>
+      <div class="starter-cta" style="margin-top:1.5rem;font-size:clamp(1rem,2.4vw,1.3rem);color:#bcd8ff;text-align:center;">Try it risk free — we will beg you to leave because it is costing us too much money to keep you on.</div>
+      <div id="starterBtnWrap" class="starter-btn-wrap" style="position:relative;display:flex;justify-content:center;margin-top:12px;overflow:visible;">
+        <button id="starterGetStartedBtn" class="hover-border-gradient-btn" type="button">
+          <div class="btn-content" style="font-size:1.25rem;padding:1.2rem 3.2rem;">Get Started</div>
+          <div class="gradient-border"></div>
+        </button>
+      </div>
+    </div>
+  </section>
+  <style>
+    @keyframes star-float { from { transform: translateY(0) scale(1);} to { transform: translateY(-12px) scale(1.1);} }
+    @keyframes star-rise { from { transform: translateY(8px) scale(0.9); opacity: .1;} to { transform: translateY(-18px) scale(1.1); opacity: 1;} }
+  </style>
   <div id="root" style="position: relative; z-index: 2;"></div>
   <style>
     /* Add top spacing so content isn't tight under fixed header */
@@ -374,7 +399,6 @@
         ],
         details: [
           "1 post per week",
-          "Agency-created content (40%)",
           "Weekly content calendars",
           "2 stories per week",
           "Community engagement 1x/week",
@@ -384,8 +408,7 @@
           "Basic monthly performance report",
           "Lead Gen: 1 campaign/month",
           "Website Chatbot (basic)",
-          "Travel coordination: 3 trips",
-          "categorization/processing receipts"
+          "Paid ads: 10% rev"
         ]
       },
       {
@@ -406,7 +429,6 @@
         ],
         details: [
           "4 posts per week",
-          "Agency-created content (60%)",
           "Weekly content calendars",
           "3 stories per day",
           "Community engagement 3x/week",
@@ -417,10 +439,9 @@
           "Basic website buildout",
           "Social media chatbot",
           "Monthly industry updates",
-          "10 invoices categorized per month",
           "Basic monthly performance report",
-          "Extra email campaigns",
-          "Photography shoot(s)"
+          "Photography shoot(s)",
+          "Paid ads: 10% rev"
         ]
       },
       {
@@ -442,7 +463,6 @@
         ],
         details: [
           "7 posts per week",
-          "100% Agency-created content",
           "Weekly content calendars",
           "2 stories per day",
           "Community engagement 5x/week",
@@ -455,13 +475,9 @@
           "Social media chatbot",
           "Internal company chatbot",
           "Weekly industry updates to clients",
-          "600 invoices categorized monthly",
-          "Full travel coordination support",
-          "2 email campaigns per month",
-          "Advanced reporting",
-          "More geotargeted locations",
-          "Additional photography shoots",
-          "Additional lead generation"
+          "2-3 photography shoots based on need",
+          "Additional lead generation",
+          "Paid ads: 10% rev"
         ]
       }
     ];
@@ -599,8 +615,10 @@
       const [openIdx, setOpenIdx] = useState(null);
       const brandContainerRef = useRef(null);
       const particlesRef = useRef(null);
+      const enableBrandParticles = false; // disable stars behind Brand Scaling card
 
       useEffect(() => {
+        if (!enableBrandParticles) return;
         const container = brandContainerRef.current;
         if (!container || particlesRef.current) return;
         if (typeof ParticleSystem === 'undefined') return;
@@ -635,6 +653,68 @@
           particlesRef.current = null;
           if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
         };
+      }, []);
+
+      // Starter button particle overlay (copy of Brand Scaling effect)
+      useEffect(() => {
+        const wrap = document.getElementById('starterBtnWrap');
+        if (!wrap) return;
+        if (wrap.querySelector('.starter-particles')) return;
+
+        // Ensure correct layering
+        wrap.style.position = 'relative';
+        wrap.style.overflow = 'visible';
+        const btn = wrap.querySelector('button');
+        if (btn) { btn.style.position = 'relative'; btn.style.zIndex = '2'; }
+
+        // Create overlay for particles
+        const overlay = document.createElement('div');
+        overlay.className = 'starter-particles';
+        overlay.style.position = 'absolute';
+        overlay.style.inset = '-14px';
+        overlay.style.pointerEvents = 'none';
+        overlay.style.zIndex = '1';
+        wrap.appendChild(overlay);
+
+        // Initialize particle system similar to Brand Scaling card
+        let system = null;
+        try {
+          if (typeof ParticleSystem !== 'undefined') {
+            system = new ParticleSystem(overlay, {
+              particleCount: 200,
+              particleSpread: 15,
+              speed: 0.05,
+              particleColors: ["#ffffff", "#4a90e2", "#ffffff"],
+              moveParticlesOnHover: true,
+              particleHoverFactor: 3,
+              alphaParticles: false,
+              particleBaseSize: 8,
+              sizeRandomness: 0.8,
+              cameraDistance: 10,
+              disableRotation: false
+            });
+          }
+        } catch (_) {}
+
+        return () => {
+          try { system?.destroy(); } catch (_) {}
+          if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        };
+      }, []);
+
+      // Hook up Starter Get Started button to open modal (POST to Formspree)
+      useEffect(() => {
+        const btn = document.getElementById('starterGetStartedBtn');
+        if (!btn) return;
+        const handler = () => {
+          const modal = document.getElementById('starterSignupModal');
+          if (modal) {
+            modal.classList.add('show');
+            document.body.classList.add('modal-open');
+          }
+        };
+        btn.addEventListener('click', handler);
+        return () => btn.removeEventListener('click', handler);
       }, []);
 
       // Initialize focus card effects after component mounts
@@ -706,18 +786,17 @@
               textAlign: 'center',
               color: 'white'
             }}>
-              <h2 className="shimmer-text" style={{
+              <h2 style={{
                 fontSize: 32,
                 fontWeight: 800,
                 marginBottom: 8,
-                textShadow: '0 0 20px rgba(255,255,255,0.2), 0 0 30px rgba(74,144,226,0.2)'
-              }}>Brand Scaling with Ads</h2>
+                color: '#ffffff'
+              }}>Brand Scaling with Paid Ads Only</h2>
               <p style={{
                 fontSize: 18,
                 color: '#e6efff',
-                marginBottom: 20,
-                textShadow: '0 0 12px rgba(255,255,255,0.25)'
-              }}>Free plus % Value Added</p>
+                marginBottom: 20
+              }}>Free plus 10% Value Added</p>
               <button 
                 className="brand-scaling-btn"
                 style={{
@@ -772,7 +851,7 @@
     <div class="signup-form-container">
       <button class="close-btn" onclick="document.getElementById('signupModal').classList.remove('show'); document.body.classList.remove('modal-open');">&times;</button>
       <h2 class="modal-title">Join Brand Scaling with Ads</h2>
-      <form class="signup-form" action="https://formspree.io/f/xpwagvyk" method="POST" onsubmit="return handleSignupSubmit(event)">
+      <form class="signup-form" action="https://formspree.io/f/mjkavrkr" method="POST" onsubmit="return handleSignupSubmit(event)">
         <input type="hidden" name="service" value="Brand Scaling with Ads">
         <input type="hidden" name="_subject" value="Brand Scaling Signup">
         <input type="hidden" name="projectId" value="2820859190019358505">
@@ -799,6 +878,40 @@
         <button type="submit" class="signup-btn">Get Started with Brand Scaling</button>
       </form>
       
+    </div>
+  </div>
+
+  <!-- Starter Signup Modal -->
+  <div id="starterSignupModal" class="signup-modal">
+    <div class="signup-form-container">
+      <button class="close-btn" onclick="document.getElementById('starterSignupModal').classList.remove('show'); document.body.classList.remove('modal-open');">&times;</button>
+      <h2 class="modal-title">Join Starter Package Deal</h2>
+      <form class="signup-form" action="https://formspree.io/f/manpyjyd" method="POST" onsubmit="return handleSignupSubmit(event)">
+        <input type="hidden" name="service" value="Starter Package Deal">
+        <input type="hidden" name="_subject" value="Starter Package Signup">
+        <input type="hidden" name="projectId" value="2820859190019358505">
+        <div class="form-group">
+          <label class="form-label" for="starterFirstName">First Name</label>
+          <input class="form-input" type="text" id="starterFirstName" name="firstName" placeholder="John" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="starterLastName">Last Name</label>
+          <input class="form-input" type="text" id="starterLastName" name="lastName" placeholder="Doe" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="starterEmail">Email Address</label>
+          <input class="form-input" type="email" id="starterEmail" name="email" placeholder="john.doe@example.com" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="starterCompany">Company (Optional)</label>
+          <input class="form-input" type="text" id="starterCompany" name="company" placeholder="Your Company">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="starterPhone">Phone Number</label>
+          <input class="form-input" type="tel" id="starterPhone" name="phone" placeholder="+1 (555) 123-4567" required>
+        </div>
+        <button type="submit" class="signup-btn">Get Started — Starter Package</button>
+      </form>
     </div>
   </div>
 
