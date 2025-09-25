@@ -708,6 +708,8 @@ body {
 @media (max-width: 768px) {
     .navbar { padding: 1rem 0; }
     .nav-link { font-size: 1rem; padding: 0.75rem 1rem; }
+    /* Hide animated stars background video on mobile */
+    .global-video-bg { display: none; }
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -782,6 +784,8 @@ body {
     .nav-link { padding: 0.9rem 1.2rem; }
     .carousel-btn { width: 48px; height: 48px; }
     .btn-content { padding: 1.4rem 3.2rem; }
+    /* Hide background video on touch devices for performance/legibility */
+    .global-video-bg { display: none; }
 }
 
 /* Respect reduced motion preferences */
