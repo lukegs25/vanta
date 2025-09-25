@@ -216,10 +216,28 @@ body {
     opacity: 1;
     pointer-events: none;
     background: transparent;
+    /* Prevent fullscreen on mobile */
+    -webkit-playsinline: true;
+    playsinline: true;
+    /* Ensure video is always visible */
+    visibility: visible;
+    display: block;
 }
 
-/* Ensure video plays */
+/* Ensure video plays and hide controls */
 .global-video-bg::-webkit-media-controls {
+    display: none !important;
+}
+
+.global-video-bg::-webkit-media-controls-panel {
+    display: none !important;
+}
+
+.global-video-bg::-webkit-media-controls-play-button {
+    display: none !important;
+}
+
+.global-video-bg::-webkit-media-controls-start-playback-button {
     display: none !important;
 }
 
@@ -236,15 +254,16 @@ body {
 }
 
 .hero-title {
-    font-size: clamp(3rem, 16vw, 30rem);
-    line-height: 0.9;
+    font-size: clamp(1.5rem, 8vw, 12rem);
+    line-height: 0.8;
     font-weight: 900;
     color: black;
-    letter-spacing: 0.03em;
+    letter-spacing: -0.02em;
     position: absolute;
     z-index: 2;
     left: 50%;
-    transform: translateX(-50%);
+    top: 10%;
+    transform: translate(-50%, -50%);
     transform-origin: center;
     white-space: nowrap; /* never wrap VANTA to two lines */
     word-break: keep-all;
@@ -769,6 +788,23 @@ body {
     
     .about .container {
         z-index: 16;
+    }
+    
+    /* Ensure video background works on mobile */
+    .global-video-bg {
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        z-index: -1 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        display: block !important;
+        object-fit: cover !important;
+        /* Force mobile browsers to respect playsinline */
+        -webkit-playsinline: true !important;
+        playsinline: true !important;
     }
 }
 

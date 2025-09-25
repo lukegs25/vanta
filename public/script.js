@@ -407,61 +407,61 @@ class AppleCardsCarousel {
 function initializeAppleCarousel() {
     const workData = [
         {
-            src: "/public/our work/Flower Power Draft.png",
+            src: "public/our work/Flower Power Draft.png",
             title: "Flower Power",
             category: "Creative Design",
             content: "Vibrant floral-inspired design bringing nature's beauty into modern branding."
         },
         {
-            src: "/public/our work/Strawberries and Cream .mp4",
+            src: "public/our work/Strawberries and Cream .mp4",
             title: "Strawberries and Cream",
             category: "Video Production",
             content: "Delicious visual storytelling showcasing premium ingredients with cinematic quality."
         },
         {
-            src: "/public/our work/St Pattys Version of their Ad.mov",
+            src: "public/our work/St Pattys Version of their Ad.mov",
             title: "St. Patrick's Day Campaign",
             category: "Video Production", 
             content: "Festive seasonal advertising campaign with engaging motion graphics and storytelling."
         },
         {
-            src: "/public/our work/Homesick Hawaii.png",
+            src: "public/our work/Homesick Hawaii.png",
             title: "Homesick Hawaii",
             category: "Brand Design",
             content: "Tropical-inspired branding capturing the essence of island paradise with modern design elements."
         },
         {
-            src: "/public/our work/Homesick California.png", 
+            src: "public/our work/Homesick California.png", 
             title: "Homesick California",
             category: "Brand Design",
             content: "California dreaming brought to life through vibrant colors and contemporary aesthetics."
         },
         {
-            src: "/public/our work/Homesick Utah.png",
+            src: "public/our work/Homesick Utah.png",
             title: "Homesick Utah",
             category: "Brand Design", 
             content: "Mountain-inspired design reflecting the natural beauty and rugged landscapes of Utah."
         },
         {
-            src: "/public/our work/Linens and Surf.jpg",
+            src: "public/our work/Linens and Surf.jpg",
             title: "Linens and Surf",
             category: "Photography",
             content: "Lifestyle photography capturing the perfect blend of comfort and coastal living."
         },
         {
-            src: "/public/our work/Ochre Heart Scent Draft.png",
+            src: "public/our work/Ochre Heart Scent Draft.png",
             title: "Ochre Heart Scent",
             category: "Product Design",
             content: "Sophisticated fragrance branding with earthy tones and elegant typography."
         },
         {
-            src: "/public/our work/Pura Pantone Poster.png",
+            src: "public/our work/Pura Pantone Poster.png",
             title: "Pura Pantone Collection",
             category: "Print Design",
             content: "Bold color exploration showcasing the power of Pantone in modern design applications."
         },
         {
-            src: "/public/our work/Scent the Halls Final.png",
+            src: "public/our work/Scent the Halls Final.png",
             title: "Scent the Halls",
             category: "Holiday Campaign",
             content: "Festive holiday branding combining seasonal warmth with contemporary design elements."
@@ -470,7 +470,11 @@ function initializeAppleCarousel() {
 
     const container = document.getElementById('apple-carousel-container');
     if (container) {
+        console.log('Initializing Apple Cards Carousel...');
         new AppleCardsCarousel(container, workData);
+        console.log('Apple Cards Carousel initialized successfully');
+    } else {
+        console.error('Apple carousel container not found!');
     }
 }
 
@@ -481,8 +485,17 @@ document.addEventListener('DOMContentLoaded', () => {
     if (globalVideo) {
         console.log('Global video element found, initializing...');
         
+        // Set video attributes for mobile compatibility
+        globalVideo.setAttribute('playsinline', 'true');
+        globalVideo.setAttribute('webkit-playsinline', 'true');
+        globalVideo.setAttribute('muted', 'true');
+        globalVideo.setAttribute('loop', 'true');
+        globalVideo.setAttribute('autoplay', 'true');
+        
         // Set video to visible immediately
         globalVideo.style.opacity = '1';
+        globalVideo.style.visibility = 'visible';
+        globalVideo.style.display = 'block';
         
         // Multiple event listeners to ensure playback
         globalVideo.addEventListener('loadeddata', () => {
