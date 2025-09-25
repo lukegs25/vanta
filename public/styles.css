@@ -723,13 +723,50 @@ body {
     font-size: 1rem;
 }
 
+/* Mobile Navigation Toggle Button */
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 30px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1001;
+}
+
+.nav-toggle-bar {
+    width: 100%;
+    height: 3px;
+    background-color: white;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+}
+
+.nav-toggle:hover .nav-toggle-bar {
+    background-color: #cccccc;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar { padding: 1rem 0; }
     .nav-link { font-size: 1rem; padding: 0.75rem 1rem; }
-    /* Hide animated stars background video on mobile */
-    .global-video-bg { display: none; }
+    
+    /* Show mobile navigation toggle */
+    .nav-toggle {
+        display: flex;
+        position: absolute;
+        left: 20px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    
+    /* Hide regular navigation menu on mobile */
     .nav-menu {
+        display: none;
         position: fixed;
         left: -100%;
         top: 80px;
@@ -742,7 +779,9 @@ body {
         gap: 1rem;
     }
     
+    /* Show mobile menu when active */
     .nav-menu.active {
+        display: flex;
         left: 0;
     }
     
@@ -786,6 +825,69 @@ body {
         /* Force mobile browsers to respect playsinline */
         -webkit-playsinline: true !important;
         playsinline: true !important;
+    }
+    
+    /* Pricing cards mobile horizontal scroll */
+    .pricing-cards-container {
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch !important;
+        scroll-behavior: smooth !important;
+        padding: 0 20px !important;
+        margin: 0 -20px !important;
+        width: calc(100% + 40px) !important;
+    }
+    
+    .pricing-cards-container::-webkit-scrollbar {
+        height: 4px;
+    }
+    
+    .pricing-cards-container::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 2px;
+    }
+    
+    .pricing-cards-container::-webkit-scrollbar-thumb {
+        background: rgba(74, 144, 226, 0.6);
+        border-radius: 2px;
+    }
+    
+    .pricing-cards-container::-webkit-scrollbar-thumb:hover {
+        background: rgba(74, 144, 226, 0.8);
+    }
+    
+    /* Hide scrollbar on Firefox */
+    .pricing-cards-container {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(74, 144, 226, 0.6) rgba(255, 255, 255, 0.1);
+    }
+    
+    /* Ensure pricing cards don't shrink on mobile */
+    .pricing-card {
+        flex-shrink: 0 !important;
+        min-width: 300px !important;
+    }
+    
+    /* Add scroll indicators for mobile */
+    .pricing-cards-container::before,
+    .pricing-cards-container::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 20px;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    .pricing-cards-container::before {
+        left: 0;
+        background: linear-gradient(to right, rgba(10, 10, 10, 0.8), transparent);
+    }
+    
+    .pricing-cards-container::after {
+        right: 0;
+        background: linear-gradient(to left, rgba(10, 10, 10, 0.8), transparent);
     }
 }
 

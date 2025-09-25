@@ -513,7 +513,8 @@
           width: 330,
           margin: 16,
           position: 'relative',
-          minHeight: 450
+          minHeight: 450,
+          flexShrink: 0
         }}>
           <div style={{display: 'flex', alignItems: 'center'}}>
             <h2>{plan.name}</h2>
@@ -772,8 +773,12 @@
             flexDirection: 'row',
             justifyContent: 'center',
             maxWidth: 1200,
-            width: '100%'
-          }}>
+            overflowX: 'auto',
+            overflowY: 'hidden',
+            padding: '0 20px',
+            margin: '0 -20px',
+            width: 'calc(100% + 40px)'
+          }} className="pricing-cards-container">
             {plans.map((plan, idx) => (
               <PricingCard
                 key={plan.name}
