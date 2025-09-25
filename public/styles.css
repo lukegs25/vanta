@@ -6,7 +6,7 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     line-height: 1.6;
     color: white;
     background: #0a0a0a;
@@ -44,7 +44,7 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     position: relative;
 }
@@ -93,6 +93,13 @@ body {
     align-items: center;
 }
 
+.nav-logo-img {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    display: block;
+}
+
 .nav-link {
     text-decoration: none;
     color: black;
@@ -104,16 +111,10 @@ body {
     padding: 0.5rem 1rem;
     cursor: pointer;
     text-shadow: 
-        0 0 3px rgba(255, 255, 255, 0.9),
-        0 0 6px rgba(255, 255, 255, 0.85),
-        0 0 9px rgba(255, 255, 255, 0.8),
-        0 0 12px rgba(255, 255, 255, 0.75),
-        0 0 15px rgba(255, 255, 255, 0.7),
-        0 0 18px rgba(255, 255, 255, 0.6),
-        0 0 21px rgba(255, 255, 255, 0.5),
-        0 0 24px rgba(255, 255, 255, 0.45),
-        0 0 27px rgba(255, 255, 255, 0.4),
-        0 0 30px rgba(255, 255, 255, 0.35);
+        0 0 3px rgba(255, 255, 255, 0.5),
+        0 0 6px rgba(255, 255, 255, 0.4),
+        0 0 9px rgba(255, 255, 255, 0.3),
+        0 0 12px rgba(255, 255, 255, 0.25);
     outline: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-focus-ring-color: transparent;
@@ -151,41 +152,14 @@ body {
     color: black;
     font-weight: 900;
     text-shadow: 
-        0 0 4px rgba(255, 255, 255, 0.9),
-        0 0 8px rgba(255, 255, 255, 0.85),
-        0 0 12px rgba(255, 255, 255, 0.8),
-        0 0 16px rgba(255, 255, 255, 0.8),
-        0 0 20px rgba(255, 255, 255, 0.75),
-        0 0 24px rgba(255, 255, 255, 0.7),
-        0 0 28px rgba(255, 255, 255, 0.65),
-        0 0 32px rgba(255, 255, 255, 0.6),
-        0 0 36px rgba(255, 255, 255, 0.5),
-        0 0 40px rgba(255, 255, 255, 0.4),
-        0 0 44px rgba(255, 255, 255, 0.35),
-        0 0 48px rgba(255, 255, 255, 0.3);
+        0 0 4px rgba(255, 255, 255, 0.55),
+        0 0 8px rgba(255, 255, 255, 0.45),
+        0 0 12px rgba(255, 255, 255, 0.35);
 }
 
-.nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: -5px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 30px;
-    height: 2px;
-    background: #4a90e2;
-    border-radius: 1px;
-    box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
-}
+.nav-link.active::after { display: none; }
 
-.nav-dot {
-    color: #4a90e2;
-    font-size: 1.2rem;
-    margin: 0 0.5rem;
-    opacity: 0.8;
-    animation: constellation-pulse 3s ease-in-out infinite;
-    text-shadow: 0 0 10px rgba(74, 144, 226, 0.6);
-}
+.nav-dot { display: none; }
 
 /* Hero Section */
 .hero {
@@ -358,8 +332,9 @@ body {
 }
 
 .services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 2rem;
     margin-top: 4rem;
 }
@@ -373,6 +348,8 @@ body {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
+    flex: 0 0 360px; /* fixed card width to allow centering of last row */
+    max-width: 360px;
 }
 
 /* Focus card effects */
@@ -748,6 +725,10 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+    .navbar { padding: 1rem 0; }
+    .nav-link { font-size: 1rem; padding: 0.75rem 1rem; }
+    /* Hide animated stars background video on mobile */
+    .global-video-bg { display: none; }
     .nav-menu {
         position: fixed;
         left: -100%;
@@ -809,6 +790,7 @@ body {
 }
 
 @media (max-width: 480px) {
+    .nav-link { font-size: 1rem; padding: 0.75rem 1rem; }
     .hero-title {
         font-size: clamp(2rem, 18vw, 10rem);
         line-height: 0.9;
@@ -831,6 +813,21 @@ body {
     .particles-container {
         opacity: 0.5;
     }
+}
+
+/* Larger tap targets for touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .nav-link { padding: 0.9rem 1.2rem; }
+    .carousel-btn { width: 48px; height: 48px; }
+    .btn-content { padding: 1.4rem 3.2rem; }
+    /* Hide background video on touch devices for performance/legibility */
+    .global-video-bg { display: none; }
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    html { scroll-behavior: auto; }
 }
 
 /* Animations */

@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Engineer - Portfolio</title>
+    <title>Vanta Marketing Co.</title>
     <link rel="icon" href="public/vanta.png" type="image/png">
     <link rel="stylesheet" href="public/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script>tailwind={config:{corePlugins:{preflight:false}}}</script>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
     <!-- Global Video Background -->
@@ -17,13 +19,12 @@
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="#home" class="nav-link active">HOME</a>
-                </li>
-                <li class="nav-item">
-                    <span class="nav-dot">•</span>
-                </li>
+            <button id="navToggle" class="nav-toggle" aria-label="Toggle navigation" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <ul id="primary-navigation" class="nav-menu" role="menubar">
                 <li class="nav-item">
                     <a href="#services" class="nav-link">SERVICES</a>
                 </li>
@@ -32,6 +33,14 @@
                 </li>
                 <li class="nav-item">
                     <a href="#about" class="nav-link">ABOUT</a>
+                </li>
+                <li class="nav-item">
+                    <span class="nav-dot">•</span>
+                </li>
+                <li class="nav-item nav-logo-item">
+                    <a href="#home" class="nav-link active" aria-label="Home">
+                        <img src="/public/transparent_v.png" alt="Vanta" class="nav-logo-img">
+                    </a>
                 </li>
                 <li class="nav-item">
                     <span class="nav-dot">•</span>
@@ -65,31 +74,31 @@
     
     <!-- Our Services Section -->
     <section id="services" class="services">
-        <div class="container">
+        <div class="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="section-title">Our Services</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">📊</div>
+            <div class="services-grid grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="service-card w-full">
+                    <div class="service-icon"><img loading="lazy" src="/public/barchart.png" alt="Bar chart" style="width:70px;height:70px;object-fit:contain;vertical-align:middle"></div>
                     <h3>ROAS & Ad Management</h3>
                     <p>We drive higher return on ad spend (ROAS) by managing targeted ad campaigns, continuously optimizing strategies, and ensuring every advertising dollar delivers measurable results.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">📈</div>
+                <div class="service-card w-full">
+                    <div class="service-icon"><img loading="lazy" src="/public/graph.png" alt="Graph" style="width:70px;height:70px;object-fit:contain;vertical-align:middle"></div>
                     <h3>Growth Marketing</h3>
                     <p>Follower campaigns (earned + paid) • Influencer collaborations • Viral video creation • Growth analytics & performance optimization</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🤖</div>
+                <div class="service-card w-full">
+                    <div class="service-icon"><img loading="lazy" src="/public/bot%20icon.png" alt="Bot" style="width:70px;height:70px;object-fit:contain;vertical-align:middle"></div>
                     <h3>Smart Engagement</h3>
                     <p>Chatbots that convert • DM automation and response workflows • Geotargeted engagement campaigns</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">🧠</div>
+                <div class="service-card w-full">
+                    <div class="service-icon"><img loading="lazy" src="/public/brain.png" alt="Brain" style="width:75px;height:75px;object-fit:contain;vertical-align:middle"></div>
                     <h3>Content Engine</h3>
                     <p>AI-generated content (reels, photos, blogs) • Content calendars & posting systems • Reels and TikToks tailored to trends</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon">⚙️</div>
+                <div class="service-card w-full">
+                    <div class="service-icon"><img loading="lazy" src="/public/cog.png" alt="Cog" style="width:70px;height:70px;object-fit:contain;vertical-align:middle"></div>
                     <h3>AI Automation Services</h3>
                     <p>Using our expertise, we delve deep into your organisation and consult you on how AI-driven automations could enhance your operations.</p>
                 </div>
@@ -99,10 +108,10 @@
     
     <!-- About Section -->
     <section id="about" class="about">
-        <div class="container">
+        <div class="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="section-title">About Us</h2>
-            <img src="/public/Team%203.png" alt="Vanta Team" class="about-team-image">
-            <div class="about-content">
+            <img loading="lazy" src="/public/Team%203.png" alt="Vanta Team" class="about-team-image w-full max-w-xl mx-auto h-auto object-contain">
+            <div class="about-content flex flex-col md:flex-row items-center gap-6">
                 <div class="about-text">
                     <p>We are a team of marketers, creators, strategists, and experts on a mission to help businesses and individuals use AI to grow smarter and faster. We created Vanta to give brands real solutions, not just hype. By combining the latest AI tools with proven marketing and business experience, we help brands scale, reach new audiences, and operate more efficiently.</p>
                     <p>If you want to grow your brand, build your audience, or turn attention into results, Vanta has the expertise and technology to help you scale, bringing your company...</p>
@@ -119,7 +128,7 @@
     
     <!-- Work Section -->
     <section id="work" class="work">
-        <div class="container">
+        <div class="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="section-title">Our Work</h2>
             <div class="work-accomplished">
                 <ul class="work-stats">
@@ -135,7 +144,7 @@
     
     <!-- Call to Action Section -->
     <section id="contact" class="cta-section">
-        <div class="container">
+        <div class="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
             <h2 class="cta-title">Unseen work. Unmatched results.</h2>
             <div class="cta-button-container">
                 <button class="hover-border-gradient-btn" onclick="window.location.href='pricing.html'; setTimeout(() => { document.getElementById('signupModal').classList.add('show'); }, 100);">
@@ -143,13 +152,13 @@
                     <div class="gradient-border"></div>
                 </button>
             </div>
-            <div class="cta-video">
-                <video class="cta-video-el" autoplay muted loop playsinline>
+            <div class="cta-video max-w-3xl mx-auto">
+                <video class="cta-video-el w-full h-auto" autoplay muted loop playsinline>
                     <source src="/public/glass%20spinning%20V.mp4%20(1).mp4" type="video/mp4">
                 </video>
             </div>
             <div class="cta-email">
-                📧 lukewills155@gmail.com | 📱 +1 (480) 708-7994 | Copyright © 2025 Vanta Marketing Co. All rights reserved
+                lukewills155@gmail.com | +1 (480) 708-7994 | Copyright © 2025 Vanta Marketing Co. All rights reserved
             </div>
         </div>
     </section>

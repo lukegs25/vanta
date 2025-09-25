@@ -82,6 +82,22 @@ window.addEventListener('scroll', updateActiveNavLink);
 // Initialize active section on page load
 document.addEventListener('DOMContentLoaded', () => {
     updateActiveNavLink();
+    // Mobile nav toggle
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('primary-navigation');
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', () => {
+            const isOpen = navMenu.classList.toggle('active');
+            navToggle.setAttribute('aria-expanded', String(isOpen));
+        });
+        // Close menu when a link is clicked
+        navMenu.querySelectorAll('a.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+    }
 });
 
 // Hide navbar on scroll down, show on scroll up
@@ -555,6 +571,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Cursor Pixel Trail functionality
 function initCursorPixelTrail() {
+    // Only enable on devices with a fine pointer (i.e., desktop mice/trackpads)
+    const isFinePointer = window.matchMedia && window.matchMedia('(pointer: fine)').matches;
+    if (!isFinePointer) {
+        return; // skip on touch/coarse pointers for performance
+    }
+
     const canvas = document.createElement('canvas');
     canvas.style.position = 'fixed';
     canvas.style.top = '0';
