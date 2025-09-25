@@ -6,6 +6,8 @@
   <title>Vanta - Pricing</title>
   <link rel="icon" href="public/vanta.png" type="image/png">
   <link rel="stylesheet" href="/public/styles.css" />
+  <script>tailwind={config:{corePlugins:{preflight:false}}}</script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <meta name="formspree:project" content="2820859190019358505" />
   <style>
@@ -331,6 +333,20 @@
     body { padding-top: 120px; }
   </style>
 
+  <!-- Reused CTA media and contact from homepage (content below the Get Started button) -->
+  <section class="cta-section">
+    <div class="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+      <div class="cta-video max-w-3xl mx-auto">
+        <video class="cta-video-el w-full h-auto" autoplay muted loop playsinline>
+          <source src="/public/glass%20spinning%20V.mp4%20(1).mp4" type="video/mp4">
+        </video>
+      </div>
+      <div class="cta-email">
+        lukewills155@gmail.com | +1 (480) 708-7994 | Copyright © 2025 Vanta Marketing Co. All rights reserved
+      </div>
+    </div>
+  </section>
+
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -393,11 +409,11 @@
           "Content Creation",
           "Social Media Management",
           "Email",
-          "SEO & Blogging",
           "Reporting",
           "Optional Add-Ons"
         ],
         details: [
+          "Social media platforms we manage: 1",
           "1 post per week",
           "Weekly content calendars",
           "2 stories per week",
@@ -419,7 +435,6 @@
           "Content Creation",
           "Social Media Management",
           "Email",
-          "SEO & Blogging",
           "Web Services",
           "Chatbots",
           "Client Communication",
@@ -428,6 +443,7 @@
           "Optional Add-Ons"
         ],
         details: [
+          "Social media platforms we manage: 2",
           "4 posts per week",
           "Weekly content calendars",
           "3 stories per day",
@@ -462,6 +478,7 @@
           "Optional Add-Ons"
         ],
         details: [
+          "Social media platforms we manage: 3",
           "7 posts per week",
           "Weekly content calendars",
           "2 stories per day",
