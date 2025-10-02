@@ -583,6 +583,21 @@ document.addEventListener('DOMContentLoaded', () => {
         window.addEventListener('scroll', onScrollReveal, { passive: true });
         onScrollReveal();
     }
+
+    // Reveal any additional subtitles marked for scroll reveal
+    const reveals = document.querySelectorAll('.reveal-on-scroll');
+    if (reveals.length) {
+        const ro = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                } else {
+                    entry.target.classList.remove('is-visible');
+                }
+            });
+        }, { threshold: 0.2 });
+        reveals.forEach(el => ro.observe(el));
+    }
 });
 
 // Cursor Pixel Trail functionality

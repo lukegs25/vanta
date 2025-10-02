@@ -161,6 +161,50 @@ body {
 
 .nav-dot { display: none; }
 
+/* Hamburger Menu Button */
+.nav-toggle {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    z-index: 1001;
+    position: relative;
+}
+
+.nav-toggle-bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: white;
+    margin: 5px 0;
+    transition: all 0.3s ease;
+    border-radius: 3px;
+    box-shadow: 
+        0 0 3px rgba(255, 255, 255, 0.5),
+        0 0 6px rgba(255, 255, 255, 0.4);
+}
+
+.nav-toggle:hover .nav-toggle-bar {
+    background: #4a90e2;
+    box-shadow: 
+        0 0 8px rgba(74, 144, 226, 0.8),
+        0 0 15px rgba(74, 144, 226, 0.6);
+}
+
+/* Hamburger animation when active */
+.nav-menu.active ~ .nav-toggle .nav-toggle-bar:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+}
+
+.nav-menu.active ~ .nav-toggle .nav-toggle-bar:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-menu.active ~ .nav-toggle .nav-toggle-bar:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -484,6 +528,15 @@ body {
 .about-subtitle .hero-subtitle {
     margin-top: 1.5rem;
     margin-bottom: 1rem;
+}
+
+/* Interlude subtitle spacing */
+.interlude {
+    padding: 4rem 0 2rem 0;
+}
+
+.secondary-subtitle {
+    margin-top: 0;
 }
 
 .about-subtitle .tagline {
