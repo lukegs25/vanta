@@ -225,6 +225,8 @@ body {
     margin: 0 auto;
     padding: 0 20px;
     margin-top: 0; /* Center within viewport so logo can fill screen */
+    /* With relative positioning for the title, use smaller top padding */
+    padding-top: clamp(2rem, 8vh, 6rem);
 }
 
 .hero-title {
@@ -232,17 +234,19 @@ body {
     line-height: 0.8;
     font-weight: 900;
     color: black;
-    letter-spacing: -0.02em;
-    position: absolute;
+    letter-spacing: 0.03em;
+    position: relative;
     z-index: 2;
-    left: 50%;
-    top: 10%;
-    transform: translate(-50%, -50%);
+    left: auto;
+    transform: none;
     transform-origin: center;
     white-space: nowrap; /* never wrap VANTA to two lines */
     word-break: keep-all;
     overflow-wrap: normal;
     max-width: 100vw; /* ensure it fits viewport width */
+    width: max-content; /* shrink to content width */
+    margin: 0 auto; /* center the element itself */
+    text-align: center;
     text-shadow: 
         0 0 4px rgba(255, 255, 255, 0.9),
         0 0 8px rgba(255, 255, 255, 0.6),
@@ -255,17 +259,20 @@ body {
     font-weight: 700;
     color: white;
     letter-spacing: 0.08em;
-    margin-top: 2rem;
-    margin-bottom: 2.25rem;
+    margin-top: clamp(3rem, 15vh, 12rem);
+    margin-bottom: 2.5rem;
     opacity: 0;
     visibility: visible;
-    transition: all 0.3s ease;
+    transform: translateY(10px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
     text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
-    /* show only on hover */
+    position: relative;
+    z-index: 1; /* keep below the VANTA title */
 }
 
-.hero-subtitle:hover {
-    opacity: 1 !important;
+.hero-subtitle.is-visible {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .scroll-indicator {
@@ -755,33 +762,31 @@ body {
     .navbar { padding: 1rem 0; }
     .nav-link { font-size: 1rem; padding: 0.75rem 1rem; }
     
-    /* Show mobile navigation toggle */
+    /* Show hamburger on mobile */
     .nav-toggle {
-        display: flex;
+        display: block;
         position: absolute;
-        left: 20px;
+        right: 20px;
         top: 50%;
         transform: translateY(-50%);
     }
     
-    /* Hide regular navigation menu on mobile */
     .nav-menu {
-        display: none;
         position: fixed;
         left: -100%;
         top: 80px;
         flex-direction: column;
         background: rgba(45, 20, 80, 0.95);
+        backdrop-filter: blur(10px);
         width: 100%;
         text-align: center;
         transition: 0.3s;
         padding: 2rem 0;
         gap: 1rem;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
     
-    /* Show mobile menu when active */
     .nav-menu.active {
-        display: flex;
         left: 0;
     }
     
@@ -922,8 +927,6 @@ body {
     .nav-link { padding: 0.9rem 1.2rem; }
     .carousel-btn { width: 48px; height: 48px; }
     .btn-content { padding: 1.4rem 3.2rem; }
-    /* Hide background video on touch devices for performance/legibility */
-    .global-video-bg { display: none; }
 }
 
 /* Respect reduced motion preferences */

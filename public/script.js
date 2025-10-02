@@ -567,6 +567,22 @@ document.addEventListener('DOMContentLoaded', () => {
     
     // Initialize Apple Cards Carousel
     initializeAppleCarousel();
+
+    // Scroll threshold reveal for hero subtitle
+    const subtitle = document.querySelector('#home .hero-subtitle');
+    const revealAfter = 40; // pixels of scroll before showing
+    if (subtitle) {
+        subtitle.classList.remove('is-visible');
+        const onScrollReveal = () => {
+            if (window.pageYOffset > revealAfter) {
+                subtitle.classList.add('is-visible');
+            } else {
+                subtitle.classList.remove('is-visible');
+            }
+        };
+        window.addEventListener('scroll', onScrollReveal, { passive: true });
+        onScrollReveal();
+    }
 });
 
 // Cursor Pixel Trail functionality
