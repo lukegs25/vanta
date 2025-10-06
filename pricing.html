@@ -316,8 +316,7 @@
       <div style="text-align:left;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;margin:0 0 1rem 0;color:#bcd8ff;">Brand Scaling includes:</div>
       <ul class="starter-bullets" style="margin:0;padding-left:1.25rem;font-size:clamp(1.1rem,2.5vw,1.4rem);line-height:1.6;">
         <li>Meta ads</li>
-        <li>3 posts</li>
-        <li>2 videos</li>
+        <li>5 creatives</li>
       </ul>
       <div class="starter-cta" style="margin-top:1.5rem;font-size:clamp(1rem,2.4vw,1.3rem);color:#bcd8ff;text-align:center;">Try it risk free — we will beg you to leave because it is costing us too much money to keep you on.</div>
       <div id="starterBtnWrap" class="starter-btn-wrap" style="position:relative;display:flex;justify-content:center;margin-top:12px;overflow:visible;">
@@ -332,10 +331,63 @@
     @keyframes star-float { from { transform: translateY(0) scale(1);} to { transform: translateY(-12px) scale(1.1);} }
     @keyframes star-rise { from { transform: translateY(8px) scale(0.9); opacity: .1;} to { transform: translateY(-18px) scale(1.1); opacity: 1;} }
   </style>
-  <div id="root" style="position: relative; z-index: 2;"></div>
+  
+  <!-- Business Type Toggle Buttons -->
+  <section class="business-type-toggle" style="position:relative;z-index:2;padding:2rem 0;text-align:center;">
+    <div style="display:inline-flex;gap:0;background:rgba(20,20,20,0.65);border:1px solid rgba(74,144,226,0.4);border-radius:50px;padding:6px;position:relative;">
+      <button id="serviceBizBtn" class="biz-type-btn active" style="padding:12px 32px;border-radius:40px;border:none;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.3s ease;background:transparent;color:#0a0a0a;position:relative;z-index:2;">
+        Service Based Businesses
+      </button>
+      <button id="productBizBtn" class="biz-type-btn" style="padding:12px 32px;border-radius:40px;border:none;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.3s ease;background:transparent;color:rgba(255,255,255,0.8);position:relative;z-index:2;">
+        Product Based Businesses
+      </button>
+      <div id="toggleSlider" style="position:absolute;top:6px;left:6px;height:calc(100% - 12px);background:linear-gradient(135deg,#4a90e2,#ffffff);border-radius:40px;transition:all 0.3s cubic-bezier(0.4, 0, 0.2, 1);z-index:1;box-shadow:0 2px 8px rgba(74,144,226,0.4);"></div>
+    </div>
+  </section>
+  
+  <!-- Service Based Businesses Content -->
+  <div id="servicePricing" style="position: relative; z-index: 2;">
+    <div id="root"></div>
+  </div>
+  
+  <!-- Product Based Businesses Content -->
+  <div id="productPricing" style="position: relative; z-index: 2; display: none;">
+    <!-- Duplicate Value Added Only Pricing for Product Businesses -->
+    <div style="background:transparent;min-height:50vh;padding:50px 0;display:flex;flex-direction:column;align-items:center;">
+      <div style="margin-top:48px;width:100%;display:flex;justify-content:center;">
+        <div class="pricing-card brand-scaling-card" style="max-width:1200px;width:100%;padding:24px;background:rgba(10,10,18,0.55);border:1px solid rgba(74,144,226,0.45);border-radius:16px;box-shadow:0 10px 30px rgba(74,144,226,0.25);text-align:center;color:white;position:relative;">
+          <h2 style="font-size:32px;font-weight:800;margin-bottom:12px;color:#ffffff;">Value Added Only Pricing</h2>
+          <p style="font-size:16px;color:rgba(255,255,255,0.8);margin-bottom:20px;">10% revenue per closed lead</p>
+          <button 
+            class="brand-scaling-btn"
+            style="display:inline-block;padding:14px 28px;border-radius:10px;background:linear-gradient(135deg,#4a90e2 0%,#ffffff 100%);color:#0a0a0a;font-weight:bold;font-size:16px;border:none;cursor:pointer;transition:all 0.3s ease;transform:translateY(0);box-shadow:0 0 24px 4px rgba(74,144,226,0.45);"
+            onclick="document.getElementById('signupModal').classList.add('show'); document.body.classList.add('modal-open');"
+            onmouseenter="this.style.transform='translateY(-4px) scale(1.05)'; this.style.boxShadow='0 12px 40px 8px rgba(74,144,226,0.8)'; this.style.background='linear-gradient(135deg,#5ba0f2 0%,#ffffff 100%)';"
+            onmouseleave="this.style.transform='translateY(0) scale(1)'; this.style.boxShadow='0 0 24px 4px rgba(74,144,226,0.45)'; this.style.background='linear-gradient(135deg,#4a90e2 0%,#ffffff 100%)';"
+            onmousedown="this.style.transform='translateY(2px) scale(0.95)'; this.style.boxShadow='0 4px 20px 2px rgba(74,144,226,0.6)';"
+            onmouseup="this.style.transform='translateY(-4px) scale(1.05)'; this.style.boxShadow='0 12px 40px 8px rgba(74,144,226,0.8)';">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
   <style>
     /* Add top spacing so content isn't tight under fixed header */
     body { padding-top: 120px; }
+    
+    .biz-type-btn {
+      position: relative;
+      z-index: 2;
+    }
+    
+    .biz-type-btn:hover {
+      transform: translateY(-2px);
+    }
+    
+    .biz-type-btn.active {
+      color: #0a0a0a !important;
+    }
   </style>
 
   <!-- Reused CTA media and contact from homepage (content below the Get Started button) -->
@@ -358,6 +410,65 @@
   <script src="/public/particles.js"></script>
   <script src="/public/components/ui/StripeLinks.js"></script>
   <script src="/public/script.js"></script>
+  <script>
+    // Business type toggle functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      const serviceBtn = document.getElementById('serviceBizBtn');
+      const productBtn = document.getElementById('productBizBtn');
+      const servicePricing = document.getElementById('servicePricing');
+      const productPricing = document.getElementById('productPricing');
+      const toggleSlider = document.getElementById('toggleSlider');
+      
+      // Set initial slider width and position
+      function setSliderDimensions() {
+        const activeBtn = document.querySelector('.biz-type-btn.active');
+        toggleSlider.style.width = activeBtn.offsetWidth + 'px';
+        toggleSlider.style.transform = 'translateX(0)';
+      }
+      
+      // Call on load
+      setSliderDimensions();
+      
+      serviceBtn.addEventListener('click', function() {
+        // Show service pricing, hide product pricing
+        servicePricing.style.display = 'block';
+        productPricing.style.display = 'none';
+        
+        // Update button states
+        serviceBtn.classList.add('active');
+        productBtn.classList.remove('active');
+        
+        // Update button text colors
+        serviceBtn.style.color = '#0a0a0a';
+        productBtn.style.color = 'rgba(255,255,255,0.8)';
+        
+        // Slide the background to service button
+        toggleSlider.style.width = serviceBtn.offsetWidth + 'px';
+        toggleSlider.style.transform = 'translateX(0)';
+      });
+      
+      productBtn.addEventListener('click', function() {
+        // Show product pricing, hide service pricing
+        servicePricing.style.display = 'none';
+        productPricing.style.display = 'block';
+        
+        // Update button states
+        productBtn.classList.add('active');
+        serviceBtn.classList.remove('active');
+        
+        // Update button text colors
+        productBtn.style.color = '#0a0a0a';
+        serviceBtn.style.color = 'rgba(255,255,255,0.8)';
+        
+        // Slide the background to product button
+        toggleSlider.style.width = productBtn.offsetWidth + 'px';
+        toggleSlider.style.transform = 'translateX(' + serviceBtn.offsetWidth + 'px)';
+      });
+      
+      // Recalculate on window resize
+      window.addEventListener('resize', setSliderDimensions);
+    });
+  </script>
   <script>
     function initializePricingCardEffects() {
       const pricingCards = document.querySelectorAll('.pricing-card');
@@ -407,99 +518,69 @@
 
     const plans = [
       {
-        name: 'Basic',
-        price: 700,
-        setup: 50,
+        name: 'Starter Growth',
+        price: 999,
+        setup: 0,
+        subtitle: 'Small businesses just testing ads',
         features: [
-          "Content Creation",
-          "Social Media Management",
-          "Email",
-          "Reporting",
-          "Optional Add-Ons"
+          "Ad account setup & basic campaign structure",
+          "1-2 campaigns",
+          "Basic targeting setup",
+          "2-3 ad creatives",
+          "Monthly performance report",
+          "Light optimization"
         ],
         details: [
-          "Social media platforms we manage: 1",
-          "1 post per week",
-          "Weekly content calendars",
-          "2 stories per week",
-          "Community engagement 1x/week",
-          "Weekly newsletter",
-          "1 blog post/month",
-          "Advanced SEO Optimization",
-          "Basic monthly performance report",
-          "Lead Gen: 1 campaign/month",
-          "Website Chatbot (basic)",
-          "Paid ads: 10% rev"
+          "Ad account setup & basic campaign structure",
+          "1-2 campaigns (awareness or lead gen)",
+          "Basic targeting setup",
+          "2-3 ad creatives (client provides content, you format/copy edit)",
+          "Monthly performance report",
+          "Light optimization (weekly check & adjustments)"
         ]
       },
       {
-        name: 'Pro',
-        price: 1900,
-        setup: 100,
+        name: 'Growth Accelerator',
+        price: 1499,
+        setup: 0,
+        subtitle: 'Businesses ready to generate steady leads/sales',
         features: [
-          "Content Creation",
-          "Social Media Management",
-          "Email",
-          "Web Services",
-          "Chatbots",
-          "Client Communication",
-          "Admin Support",
-          "Reporting",
-          "Optional Add-Ons"
+          "3-4 campaigns",
+          "Audience research",
+          "4-5 ad creatives",
+          "Bi-weekly reporting & insights",
+          "Weekly optimization & split testing",
+          "1 call per month for strategy review"
         ],
         details: [
-          "Social media platforms we manage: 2",
-          "4 posts per week",
-          "Weekly content calendars",
-          "3 stories per day",
-          "Community engagement 3x/week",
-          "Geotargeted posting: 2 locations",
-          "Weekly newsletter",
-          "1 blog post/week",
-          "Advanced SEO Optimization",
-          "Basic website buildout",
-          "Social media chatbot",
-          "Monthly industry updates",
-          "Basic monthly performance report",
-          "Photography shoot(s)",
-          "Paid ads: 10% rev"
+          "3-4 campaigns (cold, warm, retargeting)",
+          "Audience research (using client data + lookalikes)",
+          "4-5 ad creatives (client provides assets, you edit/resize/copy tweak)",
+          "Bi-weekly reporting & insights",
+          "Weekly optimization & split testing (basic A/B copy or creative test)",
+          "1 call per month for strategy review"
         ]
       },
       {
-        name: 'Premium',
-        price: 4500,
-        setup: 275,
+        name: 'Scale & Dominate',
+        price: 1999,
+        setup: 0,
+        subtitle: 'Businesses serious about scaling',
         features: [
-          "Content Creation",
-          "Social Media Management",
-          "Email",
-          "SEO & Blogging",
-          "Web Services",
-          "Chatbots and Automation",
-          "Client Communication",
-          "Admin Support",
-          "Lead Generation",
-          "Reporting",
-          "Optional Add-Ons"
+          "Up to 5-6 campaigns",
+          "Advanced audience targeting",
+          "6-8 creatives",
+          "Weekly reporting + insights",
+          "Twice-weekly optimization",
+          "2 strategy calls per month"
         ],
         details: [
-          "Social media platforms we manage: 3",
-          "7 posts per week",
-          "Weekly content calendars",
-          "2 stories per day",
-          "Community engagement 5x/week",
-          "Geotargeted posting: 3 locations",
-          "Weekly newsletter",
-          "1 blog post/week",
-          "Advanced SEO Optimization",
-          "Advanced website buildout",
-          "Website chatbot (advanced)",
-          "Social media chatbot",
-          "Internal company chatbot",
-          "Weekly industry updates to clients",
-          "2-3 photography shoots based on need",
-          "Additional lead generation",
-          "Paid ads: 10% rev"
+          "Up to 5-6 campaigns (full funnel: cold, warm, retargeting, upsell)",
+          "Advanced audience targeting (lookalikes + retargeting segments)",
+          "6-8 creatives (repurposed from client's content, light editing)",
+          "Weekly reporting + insights",
+          "Twice-weekly optimization (scaling budget, pausing underperformers)",
+          "2 strategy calls per month (higher touch, but still limited)"
         ]
       }
     ];
@@ -521,8 +602,8 @@
           minHeight: 450,
           flexShrink: 0
         }}>
-          <div style={{display: 'flex', alignItems: 'center'}}>
-            <h2>{plan.name}</h2>
+          <div style={{display: 'flex', alignItems: 'center', marginBottom: 8}}>
+            <h2 style={{margin: 0, fontSize: '2rem', fontWeight: '800'}}>{plan.name}</h2>
             {isPopular && (
               <span style={{
                 marginLeft: 12,
@@ -535,13 +616,25 @@
               }}>Most Popular</span>
             )}
           </div>
+          {plan.subtitle && (
+            <div style={{
+              color: 'rgba(255,255,255,0.7)', 
+              fontSize: 14, 
+              fontStyle: 'italic',
+              marginBottom: 16
+            }}>
+              {plan.subtitle}
+            </div>
+          )}
           <div style={{fontSize: 32, margin: '16px 0'}}>
             ${plan.price}
             <span style={{fontSize: 18, color: '#4a90e2'}}>/month</span>
           </div>
-          <div style={{color: 'rgba(255,255,255,0.8)', fontSize: 15, marginBottom: 12}}>
-            + ${plan.setup} set up
-          </div>
+          {plan.setup > 0 && (
+            <div style={{color: 'rgba(255,255,255,0.8)', fontSize: 15, marginBottom: 12}}>
+              + ${plan.setup} set up
+            </div>
+          )}
           <ul>
             {plan.features.map(f => (
               <li key={f} style={{marginBottom: 7, fontSize: 18}}>✓ {f}</li>
@@ -564,15 +657,36 @@
           {isOpen && (
             <div style={{
               background: 'rgba(10, 10, 18, 0.6)',
-              padding: 16,
+              padding: 20,
               borderRadius: 10,
               marginBottom: 16,
               boxShadow: '0 8px 24px rgba(74, 144, 226, 0.18)',
               color: '#e6efff'
             }}>
-              <ul style={{margin: 0, padding: 0}}>
-                {plan.details.map(d => (
-                  <li key={d} style={{marginBottom: 3, fontSize: 16}}>{d}</li>
+              <ul style={{
+                margin: 0, 
+                padding: 0, 
+                listStyle: 'none',
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '12px'
+              }}>
+                {plan.details.map((d, idx) => (
+                  <li key={idx} style={{
+                    fontSize: 15,
+                    lineHeight: '1.5',
+                    paddingLeft: '20px',
+                    position: 'relative',
+                    color: 'rgba(255,255,255,0.9)'
+                  }}>
+                    <span style={{
+                      position: 'absolute',
+                      left: 0,
+                      color: '#4a90e2',
+                      fontWeight: 'bold'
+                    }}>•</span>
+                    {d}
+                  </li>
                 ))}
               </ul>
             </div>
@@ -599,7 +713,7 @@
               transform: 'translateY(0)',
             }}
             onClick={() => {
-              const key = plan.name === 'Basic' ? 'checkoutBasic' : plan.name === 'Pro' ? 'checkoutPro' : plan.name === 'Premium' ? 'checkoutPremium' : 'contact';
+              const key = plan.name === 'Starter Growth' ? 'checkoutStarter' : plan.name === 'Growth Accelerator' ? 'checkoutGrowth' : plan.name === 'Scale & Dominate' ? 'checkoutScale' : 'contact';
               const href = (window.VANTA_LINKS && window.VANTA_LINKS[key]) || 'index.html#contact';
               window.location.href = href;
             }}
@@ -790,7 +904,7 @@
                 plan={plan}
                 isOpen={openIdx === idx}
                 onToggle={() => setOpenIdx(openIdx === idx ? null : idx)}
-                isPopular={plan.name === 'Premium'}
+                isPopular={plan.name === 'Growth Accelerator'}
               />
             ))}
           </div>
@@ -816,14 +930,14 @@
               <h2 style={{
                 fontSize: 32,
                 fontWeight: 800,
-                marginBottom: 8,
+                marginBottom: 12,
                 color: '#ffffff'
-              }}>Brand Scaling with Paid Ads Only</h2>
+              }}>Value Added Only Pricing</h2>
               <p style={{
-                fontSize: 18,
-                color: '#e6efff',
+                fontSize: 16,
+                color: 'rgba(255,255,255,0.8)',
                 marginBottom: 20
-              }}>Free plus 10% Value Added</p>
+              }}>10% revenue per closed lead</p>
               <button 
                 className="brand-scaling-btn"
                 style={{
