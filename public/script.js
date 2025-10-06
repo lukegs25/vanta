@@ -531,6 +531,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
         
+        // Ensure looping even if browser fires 'ended' due to source quirks
+        globalVideo.addEventListener('ended', () => {
+            try {
+                globalVideo.currentTime = 0;
+                globalVideo.play();
+            } catch (_) {}
+        });
+
         // Try to play immediately
         globalVideo.play().catch(e => {
             console.log('Initial video autoplay failed:', e);
