@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vanta - Pricing</title>
   <link rel="icon" href="public/vanta.png" type="image/png">
-  <link rel="stylesheet" href="/public/styles.css" />
+  <link rel="stylesheet" href="public/styles.css" />
   <script>tailwind={config:{corePlugins:{preflight:false}}}</script>
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -273,7 +273,7 @@
 </head>
 <body>
   <video autoplay muted loop class="global-video-bg">
-    <source src="/public/shrot%20stars.mp4" type="video/mp4" />
+    <source src="public/shrot%20stars.mp4" type="video/mp4" />
   </video>
   <nav class="navbar">
     <div class="nav-container">
@@ -293,7 +293,7 @@
         <li class="nav-item"><span class="nav-dot">•</span></li>
         <li class="nav-item nav-logo-item">
           <a href="/#home" class="nav-link" aria-label="Home">
-            <img src="/public/transparent_v.png" alt="Vanta" class="nav-logo-img">
+            <img src="public/transparent_v.png" alt="Vanta" class="nav-logo-img">
           </a>
         </li>
         <li class="nav-item"><span class="nav-dot">•</span></li>
@@ -309,12 +309,13 @@
   </nav>
 
   <!-- Starter Package Deal Section -->
-  <section class="starter-section" style="position:relative;z-index:2;padding:4rem 0 2rem 0;">
+  <section class="starter-section" style="position:relative;z-index:2;padding:4rem 0 3rem 0;">
     <h1 class="starter-heading shimmer-text" style="text-align:center;font-size:clamp(2.25rem,8vw,6rem);font-weight:900;letter-spacing:0.02em;margin:0 0 1.5rem 0;display:inline-block;left:50%;transform:translateX(-50%);position:relative;background:linear-gradient(90deg,#ffffff,#4a90e2,#ffffff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;text-shadow:0 0 18px rgba(74,144,226,0.6);animation: shimmer 2.8s linear infinite;">Starter Package Deal</h1>
     <div class="starter-box" style="max-width:960px;margin:0 auto 3rem auto;background:rgba(20,20,20,0.65);border:1px solid rgba(74,144,226,0.6);border-radius:16px;box-shadow:0 12px 36px rgba(74,144,226,0.25);padding:clamp(1.25rem,3vw,2rem);color:#e6efff;">
       <div class="starter-title" style="text-align:center;font-size:clamp(2.5rem,8vw,4rem);font-weight:900;margin:0 0 0.75rem 0;color:#ffffff;">1 month free!</div>
       <div style="text-align:center;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;margin:0 0 1rem 0;color:#bcd8ff;">Brand Scaling includes:</div>
-      <ul class="starter-bullets" style="margin:0;padding:0;list-style:none;font-size:clamp(1.1rem,2.5vw,1.4rem);line-height:1.6;text-align:center;">
+<<<<<<< HEAD
+      <ul class="starter-bullets" style="margin:0;padding-left:0;font-size:clamp(1.1rem,2.5vw,1.4rem);line-height:1.6;text-align:center;list-style:none;">
         <li>Meta ads</li>
         <li>5 creatives</li>
       </ul>
@@ -333,7 +334,7 @@
   </style>
   
   <!-- Business Type Toggle Buttons -->
-  <section class="business-type-toggle" style="position:relative;z-index:2;padding:2rem 0;text-align:center;">
+  <section class="business-type-toggle" style="position:relative;z-index:2;padding:3rem 0;text-align:center;">
     <div style="display:inline-flex;gap:0;background:rgba(20,20,20,0.65);border:1px solid rgba(74,144,226,0.4);border-radius:50px;padding:6px;position:relative;">
       <button id="serviceBizBtn" class="biz-type-btn active" style="padding:12px 32px;border-radius:40px;border:none;font-weight:700;font-size:1rem;cursor:pointer;transition:all 0.3s ease;background:transparent;color:#0a0a0a;position:relative;z-index:2;">
         Service Based Businesses
@@ -395,7 +396,7 @@
     <div class="container max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
       <div class="cta-video max-w-3xl mx-auto">
         <video class="cta-video-el w-full h-auto" autoplay muted loop playsinline>
-          <source src="/public/glass%20spinning%20V.mp4%20(1).mp4" type="video/mp4">
+          <source src="public/glass%20spinning%20V.mp4%20(1).mp4" type="video/mp4">
         </video>
       </div>
       <div class="cta-email">
@@ -407,9 +408,9 @@
   <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
   <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-  <script src="/public/particles.js"></script>
-  <script src="/public/components/ui/StripeLinks.js"></script>
-  <script src="/public/script.js"></script>
+  <script src="public/particles.js"></script>
+  <script src="public/components/ui/StripeLinks.js"></script>
+  <script src="public/script.js"></script>
   <script>
     // Business type toggle functionality
     document.addEventListener('DOMContentLoaded', function() {
@@ -549,14 +550,14 @@
           border: '1px solid rgba(74, 144, 226, 0.6)',
           color: 'white',
           padding: 32,
-          maxWidth: 1200,
           width: '100%',
+          maxWidth: 960,
           margin: '0 auto',
           position: 'relative',
           minHeight: 450
         }}>
-          <div style={{display: 'flex', alignItems: 'center', marginBottom: 8, justifyContent: 'center'}}>
-            <h2 style={{margin: 0, fontSize: '2rem', fontWeight: '800'}}>{plan.name}</h2>
+          <div style={{display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: 8}}>
+            <h2 style={{margin: 0, fontSize: '2rem', fontWeight: '800', whiteSpace: 'nowrap'}}>{plan.name}</h2>
           </div>
           <div style={{fontSize: 32, margin: '16px 0', textAlign: 'center'}}>
             ${plan.price}
@@ -567,7 +568,7 @@
               + ${plan.setup} set up
             </div>
           )}
-          <ul style={{listStyle: 'none', padding: 0, textAlign: 'center'}}>
+          <ul style={{textAlign: 'center', padding: 0, listStyle: 'none'}}>
             {plan.features.map(f => (
               <li key={f} style={{marginBottom: 7, fontSize: 18}}>✓ {f}</li>
             ))}
@@ -806,9 +807,10 @@
             display: 'flex',
             flexDirection: 'column',
             justifyContent: 'center',
+            alignItems: 'center',
             maxWidth: 1200,
-            padding: '0 20px',
-            width: '100%'
+            width: '100%',
+            padding: '0 20px'
           }} className="pricing-cards-container">
             {plans.map((plan, idx) => (
               <PricingCard
@@ -828,13 +830,13 @@
             justifyContent: 'center'
           }}>
             <div ref={brandContainerRef} className="pricing-card brand-scaling-card" style={{
-              maxWidth: 1200,
+              maxWidth: 960,
               width: '100%',
-              padding: 24,
-              background: 'rgba(10, 10, 18, 0.55)',
-              border: '1px solid rgba(74, 144, 226, 0.45)',
+              padding: 32,
+              background: 'rgba(20, 20, 20, 0.65)',
+              border: '1px solid rgba(74, 144, 226, 0.6)',
               borderRadius: 16,
-              boxShadow: '0 10px 30px rgba(74, 144, 226, 0.25)',
+              boxShadow: '0 12px 36px rgba(74, 144, 226, 0.25)',
               textAlign: 'center',
               color: 'white'
             }}>
