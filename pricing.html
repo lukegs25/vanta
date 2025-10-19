@@ -518,54 +518,9 @@
 
     const plans = [
       {
-        name: 'Starter Growth',
-        price: 999,
-        setup: 0,
-        subtitle: 'Small businesses just testing ads',
-        features: [
-          "Ad account setup & basic campaign structure",
-          "1-2 campaigns",
-          "Basic targeting setup",
-          "2-3 ad creatives",
-          "Monthly performance report",
-          "Light optimization"
-        ],
-        details: [
-          "Ad account setup & basic campaign structure",
-          "1-2 campaigns (awareness or lead gen)",
-          "Basic targeting setup",
-          "2-3 ad creatives (client provides content, you format/copy edit)",
-          "Monthly performance report",
-          "Light optimization (weekly check & adjustments)"
-        ]
-      },
-      {
-        name: 'Growth Accelerator',
-        price: 1499,
-        setup: 0,
-        subtitle: 'Businesses ready to generate steady leads/sales',
-        features: [
-          "3-4 campaigns",
-          "Audience research",
-          "4-5 ad creatives",
-          "Bi-weekly reporting & insights",
-          "Weekly optimization & split testing",
-          "1 call per month for strategy review"
-        ],
-        details: [
-          "3-4 campaigns (cold, warm, retargeting)",
-          "Audience research (using client data + lookalikes)",
-          "4-5 ad creatives (client provides assets, you edit/resize/copy tweak)",
-          "Bi-weekly reporting & insights",
-          "Weekly optimization & split testing (basic A/B copy or creative test)",
-          "1 call per month for strategy review"
-        ]
-      },
-      {
-        name: 'Scale & Dominate',
+        name: 'The Vanta Scale Package',
         price: 1999,
         setup: 0,
-        subtitle: 'Businesses serious about scaling',
         features: [
           "Up to 5-6 campaigns",
           "Advanced audience targeting",
@@ -585,47 +540,24 @@
       }
     ];
 
-    function PricingCard({ plan, isOpen, onToggle, isPopular }) {
+    function PricingCard({ plan, isOpen, onToggle }) {
       return (
         <div className="pricing-card" style={{
           background: 'rgba(20, 20, 20, 0.65)',
           borderRadius: '16px',
-          boxShadow: isPopular
-            ? '0 10px 30px rgba(74, 144, 226, 0.35)'
-            : '0 6px 18px rgba(0, 0, 0, 0.4)',
-          border: isPopular ? '1px solid rgba(74, 144, 226, 0.6)' : '1px solid rgba(255,255,255,0.12)',
+          boxShadow: '0 10px 30px rgba(74, 144, 226, 0.35)',
+          border: '1px solid rgba(74, 144, 226, 0.6)',
           color: 'white',
           padding: 32,
-          width: 330,
-          margin: 16,
+          maxWidth: 1200,
+          width: '100%',
+          margin: '0 auto',
           position: 'relative',
-          minHeight: 450,
-          flexShrink: 0
+          minHeight: 450
         }}>
-          <div style={{display: 'flex', alignItems: 'center', marginBottom: 8}}>
+          <div style={{display: 'flex', alignItems: 'center', marginBottom: 8, justifyContent: 'center'}}>
             <h2 style={{margin: 0, fontSize: '2rem', fontWeight: '800'}}>{plan.name}</h2>
-            {isPopular && (
-              <span style={{
-                marginLeft: 12,
-                background: '#4a90e2',
-                color: '#ffffff',
-                borderRadius: 6,
-                padding: '2px 8px',
-                fontWeight: 'bold',
-                fontSize: 12
-              }}>Most Popular</span>
-            )}
           </div>
-          {plan.subtitle && (
-            <div style={{
-              color: 'rgba(255,255,255,0.7)', 
-              fontSize: 14, 
-              fontStyle: 'italic',
-              marginBottom: 16
-            }}>
-              {plan.subtitle}
-            </div>
-          )}
           <div style={{fontSize: 32, margin: '16px 0'}}>
             ${plan.price}
             <span style={{fontSize: 18, color: '#4a90e2'}}>/month</span>
@@ -707,41 +639,31 @@
               transition: 'all 0.3s ease',
               position: 'relative',
               overflow: 'hidden',
-              boxShadow: isPopular
-                ? '0 0 24px 4px rgba(74,144,226,0.45)'
-                : '0 0 14px 2px rgba(255,255,255,0.15)',
+              boxShadow: '0 0 24px 4px rgba(74,144,226,0.45)',
               transform: 'translateY(0)',
             }}
             onClick={() => {
-              const key = plan.name === 'Starter Growth' ? 'checkoutStarter' : plan.name === 'Growth Accelerator' ? 'checkoutGrowth' : plan.name === 'Scale & Dominate' ? 'checkoutScale' : 'contact';
+              const key = 'checkoutScale';
               const href = (window.VANTA_LINKS && window.VANTA_LINKS[key]) || 'index.html#contact';
               window.location.href = href;
             }}
             onMouseEnter={(e) => {
               e.target.style.transform = 'translateY(-3px) scale(1.02)';
-              e.target.style.boxShadow = isPopular
-                ? '0 8px 35px 6px rgba(74,144,226,0.7)'
-                : '0 8px 25px 4px rgba(255,255,255,0.35)';
+              e.target.style.boxShadow = '0 8px 35px 6px rgba(74,144,226,0.7)';
               e.target.style.background = 'linear-gradient(135deg, #5ba0f2 0%, #ffffff 100%)';
             }}
             onMouseLeave={(e) => {
               e.target.style.transform = 'translateY(0) scale(1)';
-              e.target.style.boxShadow = isPopular
-                ? '0 0 24px 4px rgba(74,144,226,0.45)'
-                : '0 0 14px 2px rgba(255,255,255,0.15)';
+              e.target.style.boxShadow = '0 0 24px 4px rgba(74,144,226,0.45)';
               e.target.style.background = 'linear-gradient(135deg, #4a90e2 0%, #ffffff 100%)';
             }}
             onMouseDown={(e) => {
               e.target.style.transform = 'translateY(1px) scale(0.98)';
-              e.target.style.boxShadow = isPopular
-                ? '0 2px 15px 2px rgba(74,144,226,0.6)'
-                : '0 2px 10px 1px rgba(255,255,255,0.25)';
+              e.target.style.boxShadow = '0 2px 15px 2px rgba(74,144,226,0.6)';
             }}
             onMouseUp={(e) => {
               e.target.style.transform = 'translateY(-3px) scale(1.02)';
-              e.target.style.boxShadow = isPopular
-                ? '0 8px 35px 6px rgba(74,144,226,0.7)'
-                : '0 8px 25px 4px rgba(255,255,255,0.35)';
+              e.target.style.boxShadow = '0 8px 35px 6px rgba(74,144,226,0.7)';
             }}
           >GET STARTED</button>
         </div>
@@ -874,29 +796,13 @@
           flexDirection: 'column',
           alignItems: 'center'
         }}>
-          <h1 style={{
-            color: 'white',
-            fontSize: 38,
-            fontWeight: 800,
-            marginBottom: 6,
-            textShadow: '0 0 20px rgba(255,255,255,0.35), 0 0 30px rgba(74,144,226,0.35)'
-          }}>Flexible Pricing for Every Business</h1>
-          <p style={{
-            color: '#e6efff',
-            fontSize: 18,
-            marginBottom: 42,
-            textShadow: '0 0 12px rgba(255,255,255,0.25)'
-          }}>Choose a plan that fits your needs and scale effortlessly with our AI-powered inventory solutions.</p>
           <div style={{
             display: 'flex',
-            flexDirection: 'row',
+            flexDirection: 'column',
             justifyContent: 'center',
             maxWidth: 1200,
-            overflowX: 'auto',
-            overflowY: 'hidden',
             padding: '0 20px',
-            margin: '0 -20px',
-            width: 'calc(100% + 40px)'
+            width: '100%'
           }} className="pricing-cards-container">
             {plans.map((plan, idx) => (
               <PricingCard
@@ -904,7 +810,6 @@
                 plan={plan}
                 isOpen={openIdx === idx}
                 onToggle={() => setOpenIdx(openIdx === idx ? null : idx)}
-                isPopular={plan.name === 'Growth Accelerator'}
               />
             ))}
           </div>
