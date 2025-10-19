@@ -313,12 +313,12 @@
     <h1 class="starter-heading shimmer-text" style="text-align:center;font-size:clamp(2.25rem,8vw,6rem);font-weight:900;letter-spacing:0.02em;margin:0 0 1.5rem 0;display:inline-block;left:50%;transform:translateX(-50%);position:relative;background:linear-gradient(90deg,#ffffff,#4a90e2,#ffffff);background-size:200% auto;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;color:transparent;text-shadow:0 0 18px rgba(74,144,226,0.6);animation: shimmer 2.8s linear infinite;">Starter Package Deal</h1>
     <div class="starter-box" style="max-width:960px;margin:0 auto 3rem auto;background:rgba(20,20,20,0.65);border:1px solid rgba(74,144,226,0.6);border-radius:16px;box-shadow:0 12px 36px rgba(74,144,226,0.25);padding:clamp(1.25rem,3vw,2rem);color:#e6efff;">
       <div class="starter-title" style="text-align:center;font-size:clamp(2.5rem,8vw,4rem);font-weight:900;margin:0 0 0.75rem 0;color:#ffffff;">1 month free!</div>
-      <div style="text-align:left;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;margin:0 0 1rem 0;color:#bcd8ff;">Brand Scaling includes:</div>
-      <ul class="starter-bullets" style="margin:0;padding-left:1.25rem;font-size:clamp(1.1rem,2.5vw,1.4rem);line-height:1.6;">
+      <div style="text-align:center;font-size:clamp(1rem,3vw,1.25rem);font-weight:800;margin:0 0 1rem 0;color:#bcd8ff;">Brand Scaling includes:</div>
+      <ul class="starter-bullets" style="margin:0;padding:0;list-style:none;font-size:clamp(1.1rem,2.5vw,1.4rem);line-height:1.6;text-align:center;">
         <li>Meta ads</li>
         <li>5 creatives</li>
       </ul>
-      <div class="starter-cta" style="margin-top:1.5rem;font-size:clamp(1rem,2.4vw,1.3rem);color:#bcd8ff;text-align:center;">Try it risk free — we will beg you to leave because it is costing us too much money to keep you on.</div>
+      <div class="starter-cta" style="margin-top:1.5rem;font-size:clamp(1rem,2.4vw,1.3rem);color:#bcd8ff;text-align:center;">This is how we prove to you we believe in our service</div>
       <div id="starterBtnWrap" class="starter-btn-wrap" style="position:relative;display:flex;justify-content:center;margin-top:12px;overflow:visible;">
         <button id="starterGetStartedBtn" class="hover-border-gradient-btn" type="button">
           <div class="btn-content" style="font-size:1.25rem;padding:1.2rem 3.2rem;">Get Started</div>
@@ -558,34 +558,36 @@
           <div style={{display: 'flex', alignItems: 'center', marginBottom: 8, justifyContent: 'center'}}>
             <h2 style={{margin: 0, fontSize: '2rem', fontWeight: '800'}}>{plan.name}</h2>
           </div>
-          <div style={{fontSize: 32, margin: '16px 0'}}>
+          <div style={{fontSize: 32, margin: '16px 0', textAlign: 'center'}}>
             ${plan.price}
             <span style={{fontSize: 18, color: '#4a90e2'}}>/month</span>
           </div>
           {plan.setup > 0 && (
-            <div style={{color: 'rgba(255,255,255,0.8)', fontSize: 15, marginBottom: 12}}>
+            <div style={{color: 'rgba(255,255,255,0.8)', fontSize: 15, marginBottom: 12, textAlign: 'center'}}>
               + ${plan.setup} set up
             </div>
           )}
-          <ul>
+          <ul style={{listStyle: 'none', padding: 0, textAlign: 'center'}}>
             {plan.features.map(f => (
               <li key={f} style={{marginBottom: 7, fontSize: 18}}>✓ {f}</li>
             ))}
           </ul>
-          <button
-            onClick={onToggle}
-            style={{
-              marginTop: 16,
-              marginBottom: isOpen ? 8 : 24,
-              background: 'rgba(10,10,10,0.6)',
-              color: '#4a90e2',
-              border: '1px solid rgba(74,144,226,0.7)',
-              borderRadius: 8,
-              padding: '8px 16px',
-              cursor: 'pointer',
-              fontWeight: 'bold'
-            }}
-          >{isOpen ? 'Hide Details' : 'Show Details'}</button>
+          <div style={{textAlign: 'center'}}>
+            <button
+              onClick={onToggle}
+              style={{
+                marginTop: 16,
+                marginBottom: isOpen ? 8 : 24,
+                background: 'rgba(10,10,10,0.6)',
+                color: '#4a90e2',
+                border: '1px solid rgba(74,144,226,0.7)',
+                borderRadius: 8,
+                padding: '8px 16px',
+                cursor: 'pointer',
+                fontWeight: 'bold'
+              }}
+            >{isOpen ? 'Hide Details' : 'Show Details'}</button>
+          </div>
           {isOpen && (
             <div style={{
               background: 'rgba(10, 10, 18, 0.6)',
@@ -593,7 +595,8 @@
               borderRadius: 10,
               marginBottom: 16,
               boxShadow: '0 8px 24px rgba(74, 144, 226, 0.18)',
-              color: '#e6efff'
+              color: '#e6efff',
+              textAlign: 'center'
             }}>
               <ul style={{
                 margin: 0, 
@@ -607,16 +610,9 @@
                   <li key={idx} style={{
                     fontSize: 15,
                     lineHeight: '1.5',
-                    paddingLeft: '20px',
-                    position: 'relative',
-                    color: 'rgba(255,255,255,0.9)'
+                    color: 'rgba(255,255,255,0.9)',
+                    textAlign: 'center'
                   }}>
-                    <span style={{
-                      position: 'absolute',
-                      left: 0,
-                      color: '#4a90e2',
-                      fontWeight: 'bold'
-                    }}>•</span>
                     {d}
                   </li>
                 ))}
