@@ -519,7 +519,7 @@
     const plans = [
       {
         name: 'The Vanta Scale Package',
-        price: 1999,
+        price: 2000,
         setup: 0,
         features: [
           "Up to 5-6 campaigns",
@@ -639,9 +639,19 @@
               transform: 'translateY(0)',
             }}
             onClick={() => {
-              const key = 'checkoutScale';
-              const href = (window.VANTA_LINKS && window.VANTA_LINKS[key]) || 'index.html#contact';
-              window.location.href = href;
+              const modal = document.getElementById('signupModal');
+              if (modal) {
+                const formEl = modal.querySelector('form');
+                if (formEl) formEl.action = 'https://formspree.io/f/mzzkpeeq';
+                const titleEl = modal.querySelector('.modal-title');
+                if (titleEl) titleEl.textContent = 'Get Started — Scale Package';
+                const serviceInput = modal.querySelector('input[name="service"]');
+                if (serviceInput) serviceInput.value = 'Scale Package';
+                const subjectInput = modal.querySelector('input[name="_subject"]');
+                if (subjectInput) subjectInput.value = 'Scale Package Signup';
+                modal.classList.add('show');
+                document.body.classList.add('modal-open');
+              }
             }}
             onMouseEnter={(e) => {
               e.target.style.transform = 'translateY(-3px) scale(1.02)';
